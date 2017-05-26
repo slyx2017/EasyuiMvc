@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EasyUIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asset_ApplyHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplyUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="UsingPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyDate" Type="datetime" />
+    <Property Name="DemandDate" Type="datetime" />
+    <Property Name="ApplyReason" Type="nvarchar" MaxLength="250" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="ApplyNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="ApplyStatus" Type="int" />
+    <Property Name="DisposeReason" Type="nvarchar" MaxLength="250" />
+    <Property Name="DisposeDate" Type="datetime" />
+    <Property Name="DisposeBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyDept" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Asset_ApplyLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+    <Property Name="ApplyStatus" Type="int" />
+    <Property Name="ApplyHeadId" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="Asset_BarCodeConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TargetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="PortNum" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="Asset_ClaimHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClaimNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClaimUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClaimDept" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClaimDate" Type="datetime" />
+    <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClaimStatus" Type="int" />
+    <Property Name="ClaimReason" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Asset_ClaimLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetSpec" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+    <Property Name="ClaimCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClaimHeadId" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="AssetRegistId" Type="int" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="AssetStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="Asset_CountGrowth">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="xYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="xIndex" Type="int" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Asset_Region">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="Asset_Registration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplyLineId" Type="int" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetSpec" Type="nvarchar" MaxLength="250" />
+    <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+    <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RegisterCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StockCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="BarCodeCount" Type="int" />
+    <Property Name="SNNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyDept" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplyDate" Type="datetime" />
+    <Property Name="ReceivedDate" Type="datetime" />
+    <Property Name="AssetStatus" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="Operator" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistDate" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="PrintNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Asset_ReturnHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReturnNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReturnUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReturnDept" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReturnDate" Type="datetime" />
+    <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReturnStatus" Type="int" />
+    <Property Name="ReturnReason" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Asset_ReturnLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetSpec" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+    <Property Name="ReturnCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReturnHeadId" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="AssetRegistId" Type="int" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="ClaimLineId" Type="int" />
+    <Property Name="AssetStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="Asset_ScrapHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScrapNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ScrapUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ScrapDept" Type="nvarchar" MaxLength="50" />
+    <Property Name="ScrapDate" Type="datetime" />
+    <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ScrapStatus" Type="int" />
+    <Property Name="ScrapReason" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Asset_ScrapLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetSpec" Type="nvarchar" MaxLength="50" />
+    <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+    <Property Name="ScrapCount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="ScrapHeadId" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="AssetRegistId" Type="int" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="ReturnLineId" Type="int" />
+    <Property Name="AssetStatus" Type="bit" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.b_Departs”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="b_Departs">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="DepartName" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="b_Location">
+    <Key>
+      <PropertyRef Name="VendorName" />
+      <PropertyRef Name="LocationName" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WarehousID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsBounded" Type="bit" />
+    <Property Name="LocationLength" Type="float" />
+    <Property Name="LocationWidth" Type="float" />
+    <Property Name="LocationHeight" Type="float" />
+    <Property Name="CreatePerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsSerialNumberMatch" Type="bit" />
+    <Property Name="IsAutoPrintBarcode" Type="bit" />
+    <Property Name="OutPriority" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsCheck" Type="bit" />
+    <Property Name="IsRefBin" Type="bit" />
+  </EntityType>
+  <EntityType Name="b_Vendors">
+    <Key>
+      <PropertyRef Name="VendorName" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Shortname" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Contactor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1ID" Type="int" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2ID" Type="int" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address3ID" Type="int" />
+    <Property Name="Address4" Type="nvarchar" MaxLength="500" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatePerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="KeyID" Type="int" />
+    <Property Name="MergeByH200Index" Type="bit" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.CIQ_Web_App_Menus”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="CIQ_Web_App_Menus">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="TextCH" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="TextCH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TextEN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" />
+    <Property Name="Target" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenuValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="SortNumber" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="IsDisable" Type="int" />
+    <Property Name="Role" Type="int" />
+    <Property Name="PageCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageTitle" Type="nvarchar" MaxLength="100" />
+    <Property Name="PageDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsPrivate" Type="bit" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsExternal" Type="int" />
+  </EntityType>
+  <EntityType Name="g_u_RoleInfo">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleDesc" Type="nvarchar" MaxLength="200" />
+    <Property Name="WriteRight" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="10" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“EasyUIDB.dbo.g_u_RoleMenuMapping”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="g_u_RoleMenuMapping">
+          <Property Name="RoleID" Type="int" />
+          <Property Name="MenuID" Type="int" />
+        </EntityType>-->
+  <EntityType Name="g_u_UserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="10" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" />
+    <Property Name="NickName" Type="nvarchar" MaxLength="10" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserAddress" Type="nvarchar" MaxLength="80" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Dept" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="10" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChangePWDKey" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="g_u_UserLoginHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="20" />
+    <Property Name="LoginPassword" Type="nvarchar" MaxLength="200" />
+    <Property Name="LoginIPAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoginDate" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“EasyUIDB.dbo.g_u_UserRoleMapping”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="g_u_UserRoleMapping">
+          <Property Name="UserID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+        </EntityType>-->
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.S_City”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="S_City">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="cityid" Type="varchar" MaxLength="20" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="provinceid" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.S_District”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="S_District">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="areaid" Type="varchar" MaxLength="20" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+    <Property Name="cityid" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.S_Province”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="S_Province">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="provinceid" Type="varchar" MaxLength="20" />
+    <Property Name="province" Type="varchar" MaxLength="50" />
+    <Property Name="parentid" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“EasyUIDB.dbo.Sys_ErrorT”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="Sys_ErrorT">
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ErrorMsg" Type="nvarchar(max)" />
+          <Property Name="ErrorDetail" Type="nvarchar(max)" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="IdName" />
+    </Key>
+    <Property Name="IdName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Location_Location">
+    <End Role="b_Location" Type="Self.b_Location" Multiplicity="1" />
+    <End Role="b_Location1" Type="Self.b_Location" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="b_Location">
+        <PropertyRef Name="VendorName" />
+        <PropertyRef Name="LocationName" />
+      </Principal>
+      <Dependent Role="b_Location1">
+        <PropertyRef Name="VendorName" />
+        <PropertyRef Name="LocationName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EasyUIDBModelStoreContainer">
+    <EntitySet Name="Asset_ApplyHead" EntityType="Self.Asset_ApplyHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ApplyLine" EntityType="Self.Asset_ApplyLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_BarCodeConfig" EntityType="Self.Asset_BarCodeConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ClaimHead" EntityType="Self.Asset_ClaimHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ClaimLine" EntityType="Self.Asset_ClaimLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_CountGrowth" EntityType="Self.Asset_CountGrowth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_Region" EntityType="Self.Asset_Region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_Registration" EntityType="Self.Asset_Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ReturnHead" EntityType="Self.Asset_ReturnHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ReturnLine" EntityType="Self.Asset_ReturnLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ScrapHead" EntityType="Self.Asset_ScrapHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_ScrapLine" EntityType="Self.Asset_ScrapLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="b_Location" EntityType="Self.b_Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="b_Vendors" EntityType="Self.b_Vendors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="g_u_RoleInfo" EntityType="Self.g_u_RoleInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="g_u_UserInfo" EntityType="Self.g_u_UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="g_u_UserLoginHistory" EntityType="Self.g_u_UserLoginHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="b_Departs" EntityType="Self.b_Departs" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[b_Departs].[ID] AS [ID], 
+[b_Departs].[DepartName] AS [DepartName], 
+[b_Departs].[Remark] AS [Remark]
+FROM [dbo].[b_Departs] AS [b_Departs]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CIQ_Web_App_Menus" EntityType="Self.CIQ_Web_App_Menus" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[CIQ_Web_App_Menus].[ID] AS [ID], 
+[CIQ_Web_App_Menus].[ParentID] AS [ParentID], 
+[CIQ_Web_App_Menus].[TextCH] AS [TextCH], 
+[CIQ_Web_App_Menus].[TextEN] AS [TextEN], 
+[CIQ_Web_App_Menus].[Url] AS [Url], 
+[CIQ_Web_App_Menus].[Target] AS [Target], 
+[CIQ_Web_App_Menus].[MenuValue] AS [MenuValue], 
+[CIQ_Web_App_Menus].[SortNumber] AS [SortNumber], 
+[CIQ_Web_App_Menus].[IsDisable] AS [IsDisable], 
+[CIQ_Web_App_Menus].[Role] AS [Role], 
+[CIQ_Web_App_Menus].[PageCode] AS [PageCode], 
+[CIQ_Web_App_Menus].[PageTitle] AS [PageTitle], 
+[CIQ_Web_App_Menus].[PageDescription] AS [PageDescription], 
+[CIQ_Web_App_Menus].[IsPrivate] AS [IsPrivate], 
+[CIQ_Web_App_Menus].[Remark] AS [Remark], 
+[CIQ_Web_App_Menus].[IsExternal] AS [IsExternal]
+FROM [dbo].[CIQ_Web_App_Menus] AS [CIQ_Web_App_Menus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="S_City" EntityType="Self.S_City" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[S_City].[id] AS [id], 
+[S_City].[cityid] AS [cityid], 
+[S_City].[city] AS [city], 
+[S_City].[provinceid] AS [provinceid]
+FROM [dbo].[S_City] AS [S_City]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="S_District" EntityType="Self.S_District" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[S_District].[id] AS [id], 
+[S_District].[areaid] AS [areaid], 
+[S_District].[area] AS [area], 
+[S_District].[cityid] AS [cityid]
+FROM [dbo].[S_District] AS [S_District]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="S_Province" EntityType="Self.S_Province" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[S_Province].[id] AS [id], 
+[S_Province].[provinceid] AS [provinceid], 
+[S_Province].[province] AS [province], 
+[S_Province].[parentid] AS [parentid]
+FROM [dbo].[S_Province] AS [S_Province]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+      <End Role="b_Location" EntitySet="b_Location" />
+      <End Role="b_Location1" EntitySet="b_Location" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

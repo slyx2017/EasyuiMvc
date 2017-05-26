@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EasyUIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asset_ApplyHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplyUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UsingPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyDate" Type="datetime" />
+          <Property Name="DemandDate" Type="datetime" />
+          <Property Name="ApplyReason" Type="nvarchar" MaxLength="250" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="ApplyNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="ApplyStatus" Type="int" />
+          <Property Name="DisposeReason" Type="nvarchar" MaxLength="250" />
+          <Property Name="DisposeDate" Type="datetime" />
+          <Property Name="DisposeBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyDept" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Asset_ApplyLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+          <Property Name="ApplyStatus" Type="int" />
+          <Property Name="ApplyHeadId" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asset_BarCodeConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TargetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PortNum" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asset_ClaimHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaimUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaimDept" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaimDate" Type="datetime" />
+          <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaimStatus" Type="int" />
+          <Property Name="ClaimReason" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Asset_ClaimLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetSpec" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClaimCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaimHeadId" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="AssetRegistId" Type="int" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="AssetStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asset_CountGrowth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="xYear" Type="nvarchar" MaxLength="50" />
+          <Property Name="xIndex" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Asset_Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asset_Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplyLineId" Type="int" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetSpec" Type="nvarchar" MaxLength="250" />
+          <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+          <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RegisterCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StockCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="BarCodeCount" Type="int" />
+          <Property Name="SNNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyDept" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplyDate" Type="datetime" />
+          <Property Name="ReceivedDate" Type="datetime" />
+          <Property Name="AssetStatus" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="Operator" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistDate" Type="datetime" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="PrintNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Asset_ReturnHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReturnNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReturnUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReturnDept" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReturnStatus" Type="int" />
+          <Property Name="ReturnReason" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Asset_ReturnLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetSpec" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+          <Property Name="ReturnCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReturnHeadId" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="AssetRegistId" Type="int" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="ClaimLineId" Type="int" />
+          <Property Name="AssetStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asset_ScrapHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScrapNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScrapUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScrapDept" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScrapDate" Type="datetime" />
+          <Property Name="UsingRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScrapStatus" Type="int" />
+          <Property Name="ScrapReason" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Asset_ScrapLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetSpec" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescribe" Type="nvarchar" MaxLength="250" />
+          <Property Name="ScrapCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScrapHeadId" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="AssetRegistId" Type="int" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="ReturnLineId" Type="int" />
+          <Property Name="AssetStatus" Type="bit" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.b_Departs”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="b_Departs">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="DepartName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="b_Location">
+          <Key>
+            <PropertyRef Name="VendorName" />
+            <PropertyRef Name="LocationName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WarehousID" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsBounded" Type="bit" />
+          <Property Name="LocationLength" Type="float" />
+          <Property Name="LocationWidth" Type="float" />
+          <Property Name="LocationHeight" Type="float" />
+          <Property Name="CreatePerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsSerialNumberMatch" Type="bit" />
+          <Property Name="IsAutoPrintBarcode" Type="bit" />
+          <Property Name="OutPriority" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsCheck" Type="bit" />
+          <Property Name="IsRefBin" Type="bit" />
+        </EntityType>
+        <EntityType Name="b_Vendors">
+          <Key>
+            <PropertyRef Name="VendorName" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Shortname" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Contactor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1ID" Type="int" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address2ID" Type="int" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address3ID" Type="int" />
+          <Property Name="Address4" Type="nvarchar" MaxLength="500" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatePerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="KeyID" Type="int" />
+          <Property Name="MergeByH200Index" Type="bit" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.CIQ_Web_App_Menus”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="CIQ_Web_App_Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TextCH" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="TextCH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TextEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Target" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuValue" Type="nvarchar" MaxLength="500" />
+          <Property Name="SortNumber" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="IsDisable" Type="int" />
+          <Property Name="Role" Type="int" />
+          <Property Name="PageCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="PageDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsPrivate" Type="bit" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsExternal" Type="int" />
+        </EntityType>
+        <EntityType Name="g_u_RoleInfo">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleDesc" Type="nvarchar" MaxLength="200" />
+          <Property Name="WriteRight" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“EasyUIDB.dbo.g_u_RoleMenuMapping”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="g_u_RoleMenuMapping">
+          <Property Name="RoleID" Type="int" />
+          <Property Name="MenuID" Type="int" />
+        </EntityType>-->
+        <EntityType Name="g_u_UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="10" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="10" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserAddress" Type="nvarchar" MaxLength="80" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="ChangePWDKey" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="g_u_UserLoginHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LoginPassword" Type="nvarchar" MaxLength="200" />
+          <Property Name="LoginIPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginDate" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“EasyUIDB.dbo.g_u_UserRoleMapping”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="g_u_UserRoleMapping">
+          <Property Name="UserID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+        </EntityType>-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.S_City”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="S_City">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="cityid" Type="varchar" MaxLength="20" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="provinceid" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.S_District”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="S_District">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="areaid" Type="varchar" MaxLength="20" />
+          <Property Name="area" Type="varchar" MaxLength="50" />
+          <Property Name="cityid" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EasyUIDB.dbo.S_Province”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="S_Province">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="provinceid" Type="varchar" MaxLength="20" />
+          <Property Name="province" Type="varchar" MaxLength="50" />
+          <Property Name="parentid" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“EasyUIDB.dbo.Sys_ErrorT”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="Sys_ErrorT">
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ErrorMsg" Type="nvarchar(max)" />
+          <Property Name="ErrorDetail" Type="nvarchar(max)" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="IdName" />
+          </Key>
+          <Property Name="IdName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Location_Location">
+          <End Role="b_Location" Type="Self.b_Location" Multiplicity="1" />
+          <End Role="b_Location1" Type="Self.b_Location" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="b_Location">
+              <PropertyRef Name="VendorName" />
+              <PropertyRef Name="LocationName" />
+            </Principal>
+            <Dependent Role="b_Location1">
+              <PropertyRef Name="VendorName" />
+              <PropertyRef Name="LocationName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EasyUIDBModelStoreContainer">
+          <EntitySet Name="Asset_ApplyHead" EntityType="Self.Asset_ApplyHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ApplyLine" EntityType="Self.Asset_ApplyLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_BarCodeConfig" EntityType="Self.Asset_BarCodeConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ClaimHead" EntityType="Self.Asset_ClaimHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ClaimLine" EntityType="Self.Asset_ClaimLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_CountGrowth" EntityType="Self.Asset_CountGrowth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_Region" EntityType="Self.Asset_Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_Registration" EntityType="Self.Asset_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ReturnHead" EntityType="Self.Asset_ReturnHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ReturnLine" EntityType="Self.Asset_ReturnLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ScrapHead" EntityType="Self.Asset_ScrapHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_ScrapLine" EntityType="Self.Asset_ScrapLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="b_Location" EntityType="Self.b_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="b_Vendors" EntityType="Self.b_Vendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="g_u_RoleInfo" EntityType="Self.g_u_RoleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="g_u_UserInfo" EntityType="Self.g_u_UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="g_u_UserLoginHistory" EntityType="Self.g_u_UserLoginHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="b_Departs" EntityType="Self.b_Departs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[b_Departs].[ID] AS [ID], 
+[b_Departs].[DepartName] AS [DepartName], 
+[b_Departs].[Remark] AS [Remark]
+FROM [dbo].[b_Departs] AS [b_Departs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CIQ_Web_App_Menus" EntityType="Self.CIQ_Web_App_Menus" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[CIQ_Web_App_Menus].[ID] AS [ID], 
+[CIQ_Web_App_Menus].[ParentID] AS [ParentID], 
+[CIQ_Web_App_Menus].[TextCH] AS [TextCH], 
+[CIQ_Web_App_Menus].[TextEN] AS [TextEN], 
+[CIQ_Web_App_Menus].[Url] AS [Url], 
+[CIQ_Web_App_Menus].[Target] AS [Target], 
+[CIQ_Web_App_Menus].[MenuValue] AS [MenuValue], 
+[CIQ_Web_App_Menus].[SortNumber] AS [SortNumber], 
+[CIQ_Web_App_Menus].[IsDisable] AS [IsDisable], 
+[CIQ_Web_App_Menus].[Role] AS [Role], 
+[CIQ_Web_App_Menus].[PageCode] AS [PageCode], 
+[CIQ_Web_App_Menus].[PageTitle] AS [PageTitle], 
+[CIQ_Web_App_Menus].[PageDescription] AS [PageDescription], 
+[CIQ_Web_App_Menus].[IsPrivate] AS [IsPrivate], 
+[CIQ_Web_App_Menus].[Remark] AS [Remark], 
+[CIQ_Web_App_Menus].[IsExternal] AS [IsExternal]
+FROM [dbo].[CIQ_Web_App_Menus] AS [CIQ_Web_App_Menus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="S_City" EntityType="Self.S_City" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[S_City].[id] AS [id], 
+[S_City].[cityid] AS [cityid], 
+[S_City].[city] AS [city], 
+[S_City].[provinceid] AS [provinceid]
+FROM [dbo].[S_City] AS [S_City]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="S_District" EntityType="Self.S_District" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[S_District].[id] AS [id], 
+[S_District].[areaid] AS [areaid], 
+[S_District].[area] AS [area], 
+[S_District].[cityid] AS [cityid]
+FROM [dbo].[S_District] AS [S_District]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="S_Province" EntityType="Self.S_Province" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[S_Province].[id] AS [id], 
+[S_Province].[provinceid] AS [provinceid], 
+[S_Province].[province] AS [province], 
+[S_Province].[parentid] AS [parentid]
+FROM [dbo].[S_Province] AS [S_Province]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+            <End Role="b_Location" EntitySet="b_Location" />
+            <End Role="b_Location1" EntitySet="b_Location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EasyUIDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asset_ApplyHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplyUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UsingPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+          <Property Name="DemandDate" Type="DateTime" Precision="3" />
+          <Property Name="ApplyReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="ApplyStatus" Type="Int32" />
+          <Property Name="DisposeReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DisposeDate" Type="DateTime" Precision="3" />
+          <Property Name="DisposeBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Asset_ApplyLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyStatus" Type="Int32" />
+          <Property Name="ApplyHeadId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Asset_BarCodeConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TargetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PortNum" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Asset_ClaimHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimDate" Type="DateTime" Precision="3" />
+          <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimStatus" Type="Int32" />
+          <Property Name="ClaimReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Asset_ClaimLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimHeadId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AssetRegistId" Type="Int32" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="AssetStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Asset_CountGrowth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="xYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="xIndex" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Asset_Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Asset_Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplyLineId" Type="Int32" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetSpec" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RegisterCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StockCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BarCodeCount" Type="Int32" />
+          <Property Name="SNNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="AssetStatus" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Operator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="PrintNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Asset_ReturnHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReturnNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnStatus" Type="Int32" />
+          <Property Name="ReturnReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Asset_ReturnLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnHeadId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AssetRegistId" Type="Int32" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="ClaimLineId" Type="Int32" />
+          <Property Name="AssetStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Asset_ScrapHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScrapNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScrapUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScrapDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScrapDate" Type="DateTime" Precision="3" />
+          <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScrapStatus" Type="Int32" />
+          <Property Name="ScrapReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Asset_ScrapLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ScrapCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScrapHeadId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AssetRegistId" Type="Int32" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="ReturnLineId" Type="Int32" />
+          <Property Name="AssetStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="b_Location">
+          <Key>
+            <PropertyRef Name="VendorName" />
+            <PropertyRef Name="LocationName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WarehousID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsBounded" Type="Boolean" />
+          <Property Name="LocationLength" Type="Double" />
+          <Property Name="LocationWidth" Type="Double" />
+          <Property Name="LocationHeight" Type="Double" />
+          <Property Name="CreatePerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsSerialNumberMatch" Type="Boolean" />
+          <Property Name="IsAutoPrintBarcode" Type="Boolean" />
+          <Property Name="OutPriority" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsCheck" Type="Boolean" />
+          <Property Name="IsRefBin" Type="Boolean" />
+          <NavigationProperty Name="b_Location1" Relationship="Self.FK_Location_Location" FromRole="b_Location" ToRole="b_Location1" />
+          <NavigationProperty Name="b_Location2" Relationship="Self.FK_Location_Location" FromRole="b_Location1" ToRole="b_Location" />
+        </EntityType>
+        <EntityType Name="b_Vendors">
+          <Key>
+            <PropertyRef Name="VendorName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Shortname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contactor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1ID" Type="Int32" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address2ID" Type="Int32" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address3ID" Type="Int32" />
+          <Property Name="Address4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatePerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="KeyID" Type="Int32" />
+          <Property Name="MergeByH200Index" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="g_u_RoleInfo">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="WriteRight" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="g_u_UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Dept" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ChangePWDKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="g_u_UserLoginHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LoginPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LoginIPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="IdName" />
+          </Key>
+          <Property Name="IdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="b_Departs">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="DepartName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CIQ_Web_App_Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TextCH" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="TextCH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TextEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SortNumber" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsDisable" Type="Int32" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="PageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PageDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsPrivate" Type="Boolean" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsExternal" Type="Int32" />
+        </EntityType>
+        <EntityType Name="S_City">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="cityid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="provinceid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="S_District">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="areaid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cityid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="S_Province">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="provinceid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="parentid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Location_Location">
+          <End Role="b_Location" Type="Self.b_Location" Multiplicity="1" />
+          <End Role="b_Location1" Type="Self.b_Location" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="b_Location">
+              <PropertyRef Name="VendorName" />
+              <PropertyRef Name="LocationName" />
+            </Principal>
+            <Dependent Role="b_Location1">
+              <PropertyRef Name="VendorName" />
+              <PropertyRef Name="LocationName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EasyUIDBEF" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asset_ApplyHead" EntityType="Self.Asset_ApplyHead" />
+          <EntitySet Name="Asset_ApplyLine" EntityType="Self.Asset_ApplyLine" />
+          <EntitySet Name="Asset_BarCodeConfig" EntityType="Self.Asset_BarCodeConfig" />
+          <EntitySet Name="Asset_ClaimHead" EntityType="Self.Asset_ClaimHead" />
+          <EntitySet Name="Asset_ClaimLine" EntityType="Self.Asset_ClaimLine" />
+          <EntitySet Name="Asset_CountGrowth" EntityType="Self.Asset_CountGrowth" />
+          <EntitySet Name="Asset_Region" EntityType="Self.Asset_Region" />
+          <EntitySet Name="Asset_Registration" EntityType="Self.Asset_Registration" />
+          <EntitySet Name="Asset_ReturnHead" EntityType="Self.Asset_ReturnHead" />
+          <EntitySet Name="Asset_ReturnLine" EntityType="Self.Asset_ReturnLine" />
+          <EntitySet Name="Asset_ScrapHead" EntityType="Self.Asset_ScrapHead" />
+          <EntitySet Name="Asset_ScrapLine" EntityType="Self.Asset_ScrapLine" />
+          <EntitySet Name="b_Location" EntityType="Self.b_Location" />
+          <EntitySet Name="b_Vendors" EntityType="Self.b_Vendors" />
+          <EntitySet Name="g_u_RoleInfo" EntityType="Self.g_u_RoleInfo" />
+          <EntitySet Name="g_u_UserInfo" EntityType="Self.g_u_UserInfo" />
+          <EntitySet Name="g_u_UserLoginHistory" EntityType="Self.g_u_UserLoginHistory" />
+          <EntitySet Name="Test" EntityType="Self.Test" />
+          <EntitySet Name="b_Departs" EntityType="Self.b_Departs" />
+          <EntitySet Name="CIQ_Web_App_Menus" EntityType="Self.CIQ_Web_App_Menus" />
+          <EntitySet Name="S_City" EntityType="Self.S_City" />
+          <EntitySet Name="S_District" EntityType="Self.S_District" />
+          <EntitySet Name="S_Province" EntityType="Self.S_Province" />
+          <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+            <End Role="b_Location" EntitySet="b_Location" />
+            <End Role="b_Location1" EntitySet="b_Location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EasyUIDBModelStoreContainer" CdmEntityContainer="EasyUIDBEF">
+          <EntitySetMapping Name="Asset_ApplyHead">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ApplyHead">
+              <MappingFragment StoreEntitySet="Asset_ApplyHead">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ApplyUser" ColumnName="ApplyUser" />
+                <ScalarProperty Name="UsingPerson" ColumnName="UsingPerson" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="DemandDate" ColumnName="DemandDate" />
+                <ScalarProperty Name="ApplyReason" ColumnName="ApplyReason" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ApplyNo" ColumnName="ApplyNo" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="ApplyStatus" ColumnName="ApplyStatus" />
+                <ScalarProperty Name="DisposeReason" ColumnName="DisposeReason" />
+                <ScalarProperty Name="DisposeDate" ColumnName="DisposeDate" />
+                <ScalarProperty Name="DisposeBy" ColumnName="DisposeBy" />
+                <ScalarProperty Name="ApplyDept" ColumnName="ApplyDept" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ApplyLine">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ApplyLine">
+              <MappingFragment StoreEntitySet="Asset_ApplyLine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="ApplyCount" ColumnName="ApplyCount" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="RegisterCount" ColumnName="RegisterCount" />
+                <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+                <ScalarProperty Name="ApplyStatus" ColumnName="ApplyStatus" />
+                <ScalarProperty Name="ApplyHeadId" ColumnName="ApplyHeadId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_BarCodeConfig">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_BarCodeConfig">
+              <MappingFragment StoreEntitySet="Asset_BarCodeConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TargetName" ColumnName="TargetName" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="PortNum" ColumnName="PortNum" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ClaimHead">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ClaimHead">
+              <MappingFragment StoreEntitySet="Asset_ClaimHead">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimNo" ColumnName="ClaimNo" />
+                <ScalarProperty Name="ClaimUser" ColumnName="ClaimUser" />
+                <ScalarProperty Name="ClaimDept" ColumnName="ClaimDept" />
+                <ScalarProperty Name="ClaimDate" ColumnName="ClaimDate" />
+                <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ClaimStatus" ColumnName="ClaimStatus" />
+                <ScalarProperty Name="ClaimReason" ColumnName="ClaimReason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ClaimLine">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ClaimLine">
+              <MappingFragment StoreEntitySet="Asset_ClaimLine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+                <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+                <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+                <ScalarProperty Name="ClaimCount" ColumnName="ClaimCount" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ClaimHeadId" ColumnName="ClaimHeadId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AssetRegistId" ColumnName="AssetRegistId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_CountGrowth">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_CountGrowth">
+              <MappingFragment StoreEntitySet="Asset_CountGrowth">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="xYear" ColumnName="xYear" />
+                <ScalarProperty Name="xIndex" ColumnName="xIndex" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_Region">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_Region">
+              <MappingFragment StoreEntitySet="Asset_Region">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_Registration">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_Registration">
+              <MappingFragment StoreEntitySet="Asset_Registration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ApplyLineId" ColumnName="ApplyLineId" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+                <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+                <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+                <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+                <ScalarProperty Name="ApplyCount" ColumnName="ApplyCount" />
+                <ScalarProperty Name="RegisterCount" ColumnName="RegisterCount" />
+                <ScalarProperty Name="StockCount" ColumnName="StockCount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="BarCodeCount" ColumnName="BarCodeCount" />
+                <ScalarProperty Name="SNNo" ColumnName="SNNo" />
+                <ScalarProperty Name="ApplyNo" ColumnName="ApplyNo" />
+                <ScalarProperty Name="ApplyUser" ColumnName="ApplyUser" />
+                <ScalarProperty Name="ApplyDept" ColumnName="ApplyDept" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="RegistDate" ColumnName="RegistDate" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="PrintNo" ColumnName="PrintNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ReturnHead">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ReturnHead">
+              <MappingFragment StoreEntitySet="Asset_ReturnHead">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+                <ScalarProperty Name="ReturnUser" ColumnName="ReturnUser" />
+                <ScalarProperty Name="ReturnDept" ColumnName="ReturnDept" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ReturnStatus" ColumnName="ReturnStatus" />
+                <ScalarProperty Name="ReturnReason" ColumnName="ReturnReason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ReturnLine">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ReturnLine">
+              <MappingFragment StoreEntitySet="Asset_ReturnLine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+                <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+                <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+                <ScalarProperty Name="ReturnCount" ColumnName="ReturnCount" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ReturnHeadId" ColumnName="ReturnHeadId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AssetRegistId" ColumnName="AssetRegistId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="ClaimLineId" ColumnName="ClaimLineId" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ScrapHead">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ScrapHead">
+              <MappingFragment StoreEntitySet="Asset_ScrapHead">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ScrapNo" ColumnName="ScrapNo" />
+                <ScalarProperty Name="ScrapUser" ColumnName="ScrapUser" />
+                <ScalarProperty Name="ScrapDept" ColumnName="ScrapDept" />
+                <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+                <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ScrapStatus" ColumnName="ScrapStatus" />
+                <ScalarProperty Name="ScrapReason" ColumnName="ScrapReason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_ScrapLine">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ScrapLine">
+              <MappingFragment StoreEntitySet="Asset_ScrapLine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+                <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+                <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+                <ScalarProperty Name="ScrapCount" ColumnName="ScrapCount" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ScrapHeadId" ColumnName="ScrapHeadId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AssetRegistId" ColumnName="AssetRegistId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="ReturnLineId" ColumnName="ReturnLineId" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="b_Location">
+            <EntityTypeMapping TypeName="EasyUIDBModel.b_Location">
+              <MappingFragment StoreEntitySet="b_Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="WarehousID" ColumnName="WarehousID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsBounded" ColumnName="IsBounded" />
+                <ScalarProperty Name="LocationLength" ColumnName="LocationLength" />
+                <ScalarProperty Name="LocationWidth" ColumnName="LocationWidth" />
+                <ScalarProperty Name="LocationHeight" ColumnName="LocationHeight" />
+                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+                <ScalarProperty Name="IsSerialNumberMatch" ColumnName="IsSerialNumberMatch" />
+                <ScalarProperty Name="IsAutoPrintBarcode" ColumnName="IsAutoPrintBarcode" />
+                <ScalarProperty Name="OutPriority" ColumnName="OutPriority" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="IsRefBin" ColumnName="IsRefBin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="b_Vendors">
+            <EntityTypeMapping TypeName="EasyUIDBModel.b_Vendors">
+              <MappingFragment StoreEntitySet="b_Vendors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="Shortname" ColumnName="Shortname" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Contactor" ColumnName="Contactor" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address1ID" ColumnName="Address1ID" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address2ID" ColumnName="Address2ID" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address3ID" ColumnName="Address3ID" />
+                <ScalarProperty Name="Address4" ColumnName="Address4" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="KeyID" ColumnName="KeyID" />
+                <ScalarProperty Name="MergeByH200Index" ColumnName="MergeByH200Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="g_u_RoleInfo">
+            <EntityTypeMapping TypeName="EasyUIDBModel.g_u_RoleInfo">
+              <MappingFragment StoreEntitySet="g_u_RoleInfo">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+                <ScalarProperty Name="WriteRight" ColumnName="WriteRight" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="g_u_UserInfo">
+            <EntityTypeMapping TypeName="EasyUIDBModel.g_u_UserInfo">
+              <MappingFragment StoreEntitySet="g_u_UserInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ChangePWDKey" ColumnName="ChangePWDKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="g_u_UserLoginHistory">
+            <EntityTypeMapping TypeName="EasyUIDBModel.g_u_UserLoginHistory">
+              <MappingFragment StoreEntitySet="g_u_UserLoginHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="LoginIPAddress" ColumnName="LoginIPAddress" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="EasyUIDBModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="IdName" ColumnName="IdName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="b_Departs">
+            <EntityTypeMapping TypeName="EasyUIDBModel.b_Departs">
+              <MappingFragment StoreEntitySet="b_Departs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIQ_Web_App_Menus">
+            <EntityTypeMapping TypeName="EasyUIDBModel.CIQ_Web_App_Menus">
+              <MappingFragment StoreEntitySet="CIQ_Web_App_Menus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="TextCH" ColumnName="TextCH" />
+                <ScalarProperty Name="TextEN" ColumnName="TextEN" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="MenuValue" ColumnName="MenuValue" />
+                <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+                <ScalarProperty Name="IsDisable" ColumnName="IsDisable" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="PageCode" ColumnName="PageCode" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="PageDescription" ColumnName="PageDescription" />
+                <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsExternal" ColumnName="IsExternal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_City">
+            <EntityTypeMapping TypeName="EasyUIDBModel.S_City">
+              <MappingFragment StoreEntitySet="S_City">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cityid" ColumnName="cityid" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="provinceid" ColumnName="provinceid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_District">
+            <EntityTypeMapping TypeName="EasyUIDBModel.S_District">
+              <MappingFragment StoreEntitySet="S_District">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="areaid" ColumnName="areaid" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="cityid" ColumnName="cityid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Province">
+            <EntityTypeMapping TypeName="EasyUIDBModel.S_Province">
+              <MappingFragment StoreEntitySet="S_Province">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="provinceid" ColumnName="provinceid" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

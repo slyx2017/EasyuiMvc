@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EasyUIDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Asset_ApplyHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplyUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UsingPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+    <Property Name="DemandDate" Type="DateTime" Precision="3" />
+    <Property Name="ApplyReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="ApplyStatus" Type="Int32" />
+    <Property Name="DisposeReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DisposeDate" Type="DateTime" Precision="3" />
+    <Property Name="DisposeBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Asset_ApplyLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyStatus" Type="Int32" />
+    <Property Name="ApplyHeadId" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Asset_BarCodeConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TargetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortNum" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Asset_ClaimHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClaimNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimDate" Type="DateTime" Precision="3" />
+    <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimStatus" Type="Int32" />
+    <Property Name="ClaimReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Asset_ClaimLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimHeadId" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AssetRegistId" Type="Int32" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="AssetStatus" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Asset_CountGrowth">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="xYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="xIndex" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Asset_Region">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Asset_Registration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplyLineId" Type="Int32" />
+    <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetSpec" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RegisterCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StockCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BarCodeCount" Type="Int32" />
+    <Property Name="SNNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+    <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+    <Property Name="AssetStatus" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Operator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="PrintNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Asset_ReturnHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReturnNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnStatus" Type="Int32" />
+    <Property Name="ReturnReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Asset_ReturnLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnHeadId" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AssetRegistId" Type="Int32" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="ClaimLineId" Type="Int32" />
+    <Property Name="AssetStatus" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Asset_ScrapHead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScrapNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ScrapUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ScrapDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ScrapDate" Type="DateTime" Precision="3" />
+    <Property Name="UsingRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ScrapStatus" Type="Int32" />
+    <Property Name="ScrapReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Asset_ScrapLine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssetDescribe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ScrapCount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ScrapHeadId" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AssetRegistId" Type="Int32" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="ReturnLineId" Type="Int32" />
+    <Property Name="AssetStatus" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="b_Location">
+    <Key>
+      <PropertyRef Name="VendorName" />
+      <PropertyRef Name="LocationName" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WarehousID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsBounded" Type="Boolean" />
+    <Property Name="LocationLength" Type="Double" />
+    <Property Name="LocationWidth" Type="Double" />
+    <Property Name="LocationHeight" Type="Double" />
+    <Property Name="CreatePerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsSerialNumberMatch" Type="Boolean" />
+    <Property Name="IsAutoPrintBarcode" Type="Boolean" />
+    <Property Name="OutPriority" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsCheck" Type="Boolean" />
+    <Property Name="IsRefBin" Type="Boolean" />
+    <NavigationProperty Name="b_Location1" Relationship="Self.FK_Location_Location" FromRole="b_Location" ToRole="b_Location1" />
+    <NavigationProperty Name="b_Location2" Relationship="Self.FK_Location_Location" FromRole="b_Location1" ToRole="b_Location" />
+  </EntityType>
+  <EntityType Name="b_Vendors">
+    <Key>
+      <PropertyRef Name="VendorName" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Shortname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Contactor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1ID" Type="Int32" />
+    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address2ID" Type="Int32" />
+    <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address3ID" Type="Int32" />
+    <Property Name="Address4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatePerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="KeyID" Type="Int32" />
+    <Property Name="MergeByH200Index" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="g_u_RoleInfo">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="WriteRight" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="g_u_UserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NickName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Dept" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ChangePWDKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="g_u_UserLoginHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LoginPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LoginIPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoginDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="IdName" />
+    </Key>
+    <Property Name="IdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="b_Departs">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="DepartName" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CIQ_Web_App_Menus">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="TextCH" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="TextCH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TextEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SortNumber" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsDisable" Type="Int32" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="PageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PageDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsPrivate" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsExternal" Type="Int32" />
+  </EntityType>
+  <EntityType Name="S_City">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="cityid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="provinceid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="S_District">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="areaid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cityid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="S_Province">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="provinceid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="parentid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Location_Location">
+    <End Role="b_Location" Type="Self.b_Location" Multiplicity="1" />
+    <End Role="b_Location1" Type="Self.b_Location" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="b_Location">
+        <PropertyRef Name="VendorName" />
+        <PropertyRef Name="LocationName" />
+      </Principal>
+      <Dependent Role="b_Location1">
+        <PropertyRef Name="VendorName" />
+        <PropertyRef Name="LocationName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EasyUIDBEF" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Asset_ApplyHead" EntityType="Self.Asset_ApplyHead" />
+    <EntitySet Name="Asset_ApplyLine" EntityType="Self.Asset_ApplyLine" />
+    <EntitySet Name="Asset_BarCodeConfig" EntityType="Self.Asset_BarCodeConfig" />
+    <EntitySet Name="Asset_ClaimHead" EntityType="Self.Asset_ClaimHead" />
+    <EntitySet Name="Asset_ClaimLine" EntityType="Self.Asset_ClaimLine" />
+    <EntitySet Name="Asset_CountGrowth" EntityType="Self.Asset_CountGrowth" />
+    <EntitySet Name="Asset_Region" EntityType="Self.Asset_Region" />
+    <EntitySet Name="Asset_Registration" EntityType="Self.Asset_Registration" />
+    <EntitySet Name="Asset_ReturnHead" EntityType="Self.Asset_ReturnHead" />
+    <EntitySet Name="Asset_ReturnLine" EntityType="Self.Asset_ReturnLine" />
+    <EntitySet Name="Asset_ScrapHead" EntityType="Self.Asset_ScrapHead" />
+    <EntitySet Name="Asset_ScrapLine" EntityType="Self.Asset_ScrapLine" />
+    <EntitySet Name="b_Location" EntityType="Self.b_Location" />
+    <EntitySet Name="b_Vendors" EntityType="Self.b_Vendors" />
+    <EntitySet Name="g_u_RoleInfo" EntityType="Self.g_u_RoleInfo" />
+    <EntitySet Name="g_u_UserInfo" EntityType="Self.g_u_UserInfo" />
+    <EntitySet Name="g_u_UserLoginHistory" EntityType="Self.g_u_UserLoginHistory" />
+    <EntitySet Name="Test" EntityType="Self.Test" />
+    <EntitySet Name="b_Departs" EntityType="Self.b_Departs" />
+    <EntitySet Name="CIQ_Web_App_Menus" EntityType="Self.CIQ_Web_App_Menus" />
+    <EntitySet Name="S_City" EntityType="Self.S_City" />
+    <EntitySet Name="S_District" EntityType="Self.S_District" />
+    <EntitySet Name="S_Province" EntityType="Self.S_Province" />
+    <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+      <End Role="b_Location" EntitySet="b_Location" />
+      <End Role="b_Location1" EntitySet="b_Location" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

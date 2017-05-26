@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EasyUIDBModelStoreContainer" CdmEntityContainer="EasyUIDBEF">
+    <EntitySetMapping Name="Asset_ApplyHead">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ApplyHead">
+        <MappingFragment StoreEntitySet="Asset_ApplyHead">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ApplyUser" ColumnName="ApplyUser" />
+          <ScalarProperty Name="UsingPerson" ColumnName="UsingPerson" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="DemandDate" ColumnName="DemandDate" />
+          <ScalarProperty Name="ApplyReason" ColumnName="ApplyReason" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ApplyNo" ColumnName="ApplyNo" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="ApplyStatus" ColumnName="ApplyStatus" />
+          <ScalarProperty Name="DisposeReason" ColumnName="DisposeReason" />
+          <ScalarProperty Name="DisposeDate" ColumnName="DisposeDate" />
+          <ScalarProperty Name="DisposeBy" ColumnName="DisposeBy" />
+          <ScalarProperty Name="ApplyDept" ColumnName="ApplyDept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ApplyLine">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ApplyLine">
+        <MappingFragment StoreEntitySet="Asset_ApplyLine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="ApplyCount" ColumnName="ApplyCount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="RegisterCount" ColumnName="RegisterCount" />
+          <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+          <ScalarProperty Name="ApplyStatus" ColumnName="ApplyStatus" />
+          <ScalarProperty Name="ApplyHeadId" ColumnName="ApplyHeadId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_BarCodeConfig">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_BarCodeConfig">
+        <MappingFragment StoreEntitySet="Asset_BarCodeConfig">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TargetName" ColumnName="TargetName" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="PortNum" ColumnName="PortNum" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ClaimHead">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ClaimHead">
+        <MappingFragment StoreEntitySet="Asset_ClaimHead">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClaimNo" ColumnName="ClaimNo" />
+          <ScalarProperty Name="ClaimUser" ColumnName="ClaimUser" />
+          <ScalarProperty Name="ClaimDept" ColumnName="ClaimDept" />
+          <ScalarProperty Name="ClaimDate" ColumnName="ClaimDate" />
+          <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="ClaimStatus" ColumnName="ClaimStatus" />
+          <ScalarProperty Name="ClaimReason" ColumnName="ClaimReason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ClaimLine">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ClaimLine">
+        <MappingFragment StoreEntitySet="Asset_ClaimLine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+          <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+          <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+          <ScalarProperty Name="ClaimCount" ColumnName="ClaimCount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ClaimHeadId" ColumnName="ClaimHeadId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AssetRegistId" ColumnName="AssetRegistId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_CountGrowth">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_CountGrowth">
+        <MappingFragment StoreEntitySet="Asset_CountGrowth">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="xYear" ColumnName="xYear" />
+          <ScalarProperty Name="xIndex" ColumnName="xIndex" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_Region">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_Region">
+        <MappingFragment StoreEntitySet="Asset_Region">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_Registration">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_Registration">
+        <MappingFragment StoreEntitySet="Asset_Registration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ApplyLineId" ColumnName="ApplyLineId" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+          <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+          <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+          <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+          <ScalarProperty Name="ApplyCount" ColumnName="ApplyCount" />
+          <ScalarProperty Name="RegisterCount" ColumnName="RegisterCount" />
+          <ScalarProperty Name="StockCount" ColumnName="StockCount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="BarCodeCount" ColumnName="BarCodeCount" />
+          <ScalarProperty Name="SNNo" ColumnName="SNNo" />
+          <ScalarProperty Name="ApplyNo" ColumnName="ApplyNo" />
+          <ScalarProperty Name="ApplyUser" ColumnName="ApplyUser" />
+          <ScalarProperty Name="ApplyDept" ColumnName="ApplyDept" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+          <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Operator" ColumnName="Operator" />
+          <ScalarProperty Name="RegistDate" ColumnName="RegistDate" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="PrintNo" ColumnName="PrintNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ReturnHead">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ReturnHead">
+        <MappingFragment StoreEntitySet="Asset_ReturnHead">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="ReturnUser" ColumnName="ReturnUser" />
+          <ScalarProperty Name="ReturnDept" ColumnName="ReturnDept" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="ReturnStatus" ColumnName="ReturnStatus" />
+          <ScalarProperty Name="ReturnReason" ColumnName="ReturnReason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ReturnLine">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ReturnLine">
+        <MappingFragment StoreEntitySet="Asset_ReturnLine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+          <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+          <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+          <ScalarProperty Name="ReturnCount" ColumnName="ReturnCount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ReturnHeadId" ColumnName="ReturnHeadId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AssetRegistId" ColumnName="AssetRegistId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="ClaimLineId" ColumnName="ClaimLineId" />
+          <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ScrapHead">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ScrapHead">
+        <MappingFragment StoreEntitySet="Asset_ScrapHead">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScrapNo" ColumnName="ScrapNo" />
+          <ScalarProperty Name="ScrapUser" ColumnName="ScrapUser" />
+          <ScalarProperty Name="ScrapDept" ColumnName="ScrapDept" />
+          <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+          <ScalarProperty Name="UsingRegion" ColumnName="UsingRegion" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="ScrapStatus" ColumnName="ScrapStatus" />
+          <ScalarProperty Name="ScrapReason" ColumnName="ScrapReason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_ScrapLine">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Asset_ScrapLine">
+        <MappingFragment StoreEntitySet="Asset_ScrapLine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AssetNo" ColumnName="AssetNo" />
+          <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="AssetSpec" ColumnName="AssetSpec" />
+          <ScalarProperty Name="AssetDescribe" ColumnName="AssetDescribe" />
+          <ScalarProperty Name="ScrapCount" ColumnName="ScrapCount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ScrapHeadId" ColumnName="ScrapHeadId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AssetRegistId" ColumnName="AssetRegistId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="ReturnLineId" ColumnName="ReturnLineId" />
+          <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="b_Location">
+      <EntityTypeMapping TypeName="EasyUIDBModel.b_Location">
+        <MappingFragment StoreEntitySet="b_Location">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="WarehousID" ColumnName="WarehousID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsBounded" ColumnName="IsBounded" />
+          <ScalarProperty Name="LocationLength" ColumnName="LocationLength" />
+          <ScalarProperty Name="LocationWidth" ColumnName="LocationWidth" />
+          <ScalarProperty Name="LocationHeight" ColumnName="LocationHeight" />
+          <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+          <ScalarProperty Name="IsSerialNumberMatch" ColumnName="IsSerialNumberMatch" />
+          <ScalarProperty Name="IsAutoPrintBarcode" ColumnName="IsAutoPrintBarcode" />
+          <ScalarProperty Name="OutPriority" ColumnName="OutPriority" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+          <ScalarProperty Name="IsRefBin" ColumnName="IsRefBin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="b_Vendors">
+      <EntityTypeMapping TypeName="EasyUIDBModel.b_Vendors">
+        <MappingFragment StoreEntitySet="b_Vendors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="Shortname" ColumnName="Shortname" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Contactor" ColumnName="Contactor" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address1ID" ColumnName="Address1ID" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address2ID" ColumnName="Address2ID" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="Address3ID" ColumnName="Address3ID" />
+          <ScalarProperty Name="Address4" ColumnName="Address4" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="KeyID" ColumnName="KeyID" />
+          <ScalarProperty Name="MergeByH200Index" ColumnName="MergeByH200Index" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="g_u_RoleInfo">
+      <EntityTypeMapping TypeName="EasyUIDBModel.g_u_RoleInfo">
+        <MappingFragment StoreEntitySet="g_u_RoleInfo">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+          <ScalarProperty Name="WriteRight" ColumnName="WriteRight" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="g_u_UserInfo">
+      <EntityTypeMapping TypeName="EasyUIDBModel.g_u_UserInfo">
+        <MappingFragment StoreEntitySet="g_u_UserInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="ChangePWDKey" ColumnName="ChangePWDKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="g_u_UserLoginHistory">
+      <EntityTypeMapping TypeName="EasyUIDBModel.g_u_UserLoginHistory">
+        <MappingFragment StoreEntitySet="g_u_UserLoginHistory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+          <ScalarProperty Name="LoginIPAddress" ColumnName="LoginIPAddress" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test">
+      <EntityTypeMapping TypeName="EasyUIDBModel.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="IdName" ColumnName="IdName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="b_Departs">
+      <EntityTypeMapping TypeName="EasyUIDBModel.b_Departs">
+        <MappingFragment StoreEntitySet="b_Departs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIQ_Web_App_Menus">
+      <EntityTypeMapping TypeName="EasyUIDBModel.CIQ_Web_App_Menus">
+        <MappingFragment StoreEntitySet="CIQ_Web_App_Menus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="TextCH" ColumnName="TextCH" />
+          <ScalarProperty Name="TextEN" ColumnName="TextEN" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="MenuValue" ColumnName="MenuValue" />
+          <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+          <ScalarProperty Name="IsDisable" ColumnName="IsDisable" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PageCode" ColumnName="PageCode" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="PageDescription" ColumnName="PageDescription" />
+          <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsExternal" ColumnName="IsExternal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_City">
+      <EntityTypeMapping TypeName="EasyUIDBModel.S_City">
+        <MappingFragment StoreEntitySet="S_City">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cityid" ColumnName="cityid" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="provinceid" ColumnName="provinceid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_District">
+      <EntityTypeMapping TypeName="EasyUIDBModel.S_District">
+        <MappingFragment StoreEntitySet="S_District">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="areaid" ColumnName="areaid" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="cityid" ColumnName="cityid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_Province">
+      <EntityTypeMapping TypeName="EasyUIDBModel.S_Province">
+        <MappingFragment StoreEntitySet="S_Province">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="provinceid" ColumnName="provinceid" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
