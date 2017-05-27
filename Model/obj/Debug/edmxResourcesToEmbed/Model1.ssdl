@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Sys_Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuCode" Type="int" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="MenuUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="IsInUse" Type="int" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="AddUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddUserID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="OADBModelStoreContainer">
+    <EntitySet Name="Sys_Menu" EntityType="Self.Sys_Menu" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -56,6 +56,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -108,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\CityTreegridInit.js" />
+    <Content Include="Content\js\commjs.js" />
     <Content Include="Content\js\easyui-lang-zh_CN.js" />
     <Content Include="Content\js\jquery.easyui.min.js" />
     <Content Include="Content\js\jquery.min.js" />
@@ -476,15 +481,15 @@
     <Content Include="Content\themes\metro\window.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ModelEF.Context.tt">
+    <Content Include="Models\OADBEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelEF.edmx</DependentUpon>
-      <LastGenOutput>ModelEF.Context.cs</LastGenOutput>
+      <DependentUpon>OADBEF.edmx</DependentUpon>
+      <LastGenOutput>OADBEF.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelEF.tt">
+    <Content Include="Models\OADBEF.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelEF.edmx</DependentUpon>
-      <LastGenOutput>ModelEF.cs</LastGenOutput>
+      <DependentUpon>OADBEF.edmx</DependentUpon>
+      <LastGenOutput>OADBEF.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -495,102 +500,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Asset_ApplyHead.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ApplyLine.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_BarCodeConfig.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ClaimHead.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ClaimLine.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_CountGrowth.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_Region.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_Registration.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ReturnHead.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ReturnLine.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ScrapHead.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asset_ScrapLine.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\b_Departs.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\b_Location.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\b_Vendors.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CIQ_Web_App_Menus.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\g_u_RoleInfo.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\g_u_UserInfo.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\g_u_UserLoginHistory.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelEF.Context.cs">
+    <Compile Include="Models\OADBEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEF.Context.tt</DependentUpon>
+      <DependentUpon>OADBEF.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelEF.cs">
+    <Compile Include="Models\OADBEF.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEF.tt</DependentUpon>
+      <DependentUpon>OADBEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelEF.Designer.cs">
+    <Compile Include="Models\OADBEF.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEF.edmx</DependentUpon>
+      <DependentUpon>OADBEF.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\S_City.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
+    <Compile Include="Models\Sys_Menu.cs">
+      <DependentUpon>OADBEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\S_District.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_Province.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Test.cs">
-      <DependentUpon>ModelEF.tt</DependentUpon>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>OADBEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\ModelEF.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelEF.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModelEF.edmx.diagram">
-      <DependentUpon>ModelEF.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -599,6 +534,13 @@
     <Content Include="App_Data\tree_data1.json" />
     <Content Include="Views\Shared\_LayoutPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutTopPartial.cshtml" />
+    <EntityDeploy Include="Models\OADBEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OADBEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OADBEF.edmx.diagram">
+      <DependentUpon>OADBEF.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

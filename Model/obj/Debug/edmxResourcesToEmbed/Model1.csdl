@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OADBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Sys_Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuCode" Type="Int32" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MenuUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sequence" Type="Int32" />
+    <Property Name="IsInUse" Type="Int32" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="AddUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddUserID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="OADBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Sys_Menu" EntityType="Self.Sys_Menu" />
+  </EntityContainer>
+</Schema>

@@ -1,19 +1,31 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
-    ViewBag.Tree = @ViewBag.Tree;
+﻿@{
+    Layout = null;
 }
-<table class="easyui-datagrid"
-       data-options="data:@ViewBag.Json,method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
-    <thead>
-        <tr>
-            <th data-options="field:'itemid'" width="80">Item ID</th>
-            <th data-options="field:'productid'" width="100">Product ID</th>
-            <th data-options="field:'listprice',align:'right'" width="80">List Price</th>
-            <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
-            <th data-options="field:'attr1'" width="150">Attribute</th>
-            <th data-options="field:'status',align:'center'" width="60">Status</th>
-        </tr>
-    </thead>
-</table>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - 我的EasyUI</title>
+    @Styles.Render("~/Content/themes")
+
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',border:false" style="height:40px;">@Html.Partial("_LayoutTopPartial")</div>
+    <div data-options="region:'west',split:true,title:'功能导航'" style="width:200px;padding:10px;">
+        <div id="menu" class="easyui-accordion">
+        </div>
+    </div>
+    <div data-options="region:'south',border:false" style="height:50px;padding:10px;">south region</div>
+    <div data-options="region:'center'">
+        <div id="tabs" class="easyui-tabs" data-options="tools:'#tab-tools',fit:true,border:false">
+            <div id="home" title="我的主页" data-options="iconCls:'icon-house',closable:false">
+                This is the Home content.
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_LayoutPartial")
+    @Scripts.Render("~/Content/easyuijs")
+</body>
+</html>
 

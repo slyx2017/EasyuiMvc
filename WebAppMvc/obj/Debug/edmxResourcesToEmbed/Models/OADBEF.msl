@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OADBModelStoreContainer" CdmEntityContainer="OADBEntities">
+    <EntitySetMapping Name="Sys_Menu">
+      <EntityTypeMapping TypeName="OADBModel.Sys_Menu">
+        <MappingFragment StoreEntitySet="Sys_Menu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MenuUrl" ColumnName="MenuUrl" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="IsInUse" ColumnName="IsInUse" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="AddUser" ColumnName="AddUser" />
+          <ScalarProperty Name="AddUserID" ColumnName="AddUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="OADBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="uId" ColumnName="uId" />
+          <ScalarProperty Name="uName" ColumnName="uName" />
+          <ScalarProperty Name="uLoginName" ColumnName="uLoginName" />
+          <ScalarProperty Name="uPwd" ColumnName="uPwd" />
+          <ScalarProperty Name="uAddtime" ColumnName="uAddtime" />
+          <ScalarProperty Name="uIsDel" ColumnName="uIsDel" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="AccountState" ColumnName="AccountState" />
+          <ScalarProperty Name="PowerLevelID" ColumnName="PowerLevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
