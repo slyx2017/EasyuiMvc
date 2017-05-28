@@ -35,7 +35,7 @@ function Open(text, url) {
     } else {
         $('#tabs').tabs('add', {
             title: text,
-            iconCls: "icon-ok",
+            iconCls: "icon-file",
             closable: true,
             content: url
         });
@@ -58,8 +58,7 @@ function createAccrodion() {
                    $('#menu').accordion('add', {
                        title: e.text,
                        content: "<ul id='tree" + id + "' ></ul>",
-                       selected: true,
-                       iconCls: e.iconCls
+                       selected: true
                    });
                    $.parser.parse();
                    //获取二级以下目录 含2级
@@ -86,7 +85,7 @@ function createAccrodion() {
            }, "json");
 }
 
-function addTab(subtitle, url,icon) {
+function addTab(subtitle, url, icon) {
     if (!$('#tabs').tabs('exists', subtitle)) {
         $('#tabs').tabs('add', {
             title: subtitle,

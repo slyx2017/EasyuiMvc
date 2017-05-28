@@ -36,16 +36,20 @@ namespace WebAppMvc.Controllers
                 var temp = from u in db.Sys_Menu
                            where u.ParentID == id
                            select u;
-                MenuModel menu = new MenuModel();
+                MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
-
-                menu.id = int.Parse(temp.Select(u => u.ID).ToString());
-                menu.text = temp.Select(u => u.MenuName).ToString();
-                menu.attributes = temp.Select(u => u.MenuUrl).ToString();
-                menu.iconCls = "icon-ok";
-                menu.state = temp.Select(u => u.ParentID == id).Count() > 0 ? "closed" : "open";
+                foreach (var item in temp)
+                {
+                    menu = new MenuModel();
+                    menu.id = item.ID;
+                    menu.text = item.MenuName;
+                    menu.attributes = item.MenuUrl;
+                    menu.iconCls= "tree-file";
+                    menu.state= temp.Select(u => u.ParentID == item.ID).Count() > 0 ? "open" : "closed";
+                    list.Add(menu);
+                }
                
-                list.Add(menu);
+               
                 return Json(list);
             }
             catch (Exception ex)
