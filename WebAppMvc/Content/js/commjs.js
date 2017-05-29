@@ -50,41 +50,56 @@ function createAccrodion() {
         border: false,
         animate: false
     });
-    //获取第一层初始目录 url: 'Home/InitMenu', { "id": "0" },
-    $.post("Home/InitMenu", { "pid": "0" },
-           function (data) {
-               $.each(data, function (i, e) {
-                   var id = e.id;
-                   $('#menu').accordion('add', {
-                       title: e.text,
-                       content: "<ul id='tree" + id + "' ></ul>",
-                       selected: true
-                   });
-                   $.parser.parse();
-                   //获取二级以下目录 含2级
-                   $.post("Home/InitMenu?pid=" + id, function (data) {
-                       $("#tree" + id).tree({
-                           data: data,
-                           onBeforeExpand: function (node, param) {
-                               $("#tree" + id).tree('options').url = "/Home/InitMenu?pid=" + node.id;
-                           },
-                           onClick: function (node) {
-                               if (node.state == 'closed') {
-                                   $(this).tree('expand', node.target);
-                               } else if (node.state == 'open') {
-                                   $(this).tree('collapse', node.target);
-                                   var tabTitle = node.text;
-                                   var url = node.attributes;
-                                   var icon = node.iconCls;
-                                   addTab(tabTitle, url, icon);
-                               }
-                           }
-                       });
-                   }, 'json');
-               });
-           }, "json");
+    //获取第一层初始目录 
+    $.ajax({
+        type: "post",
+        url: "Home/InitMenu",
+        data: { "pid": "0" },
+        success: function (data) {
+            $.each(data, function (i, e) {
+                //var id = e.id;
+                if (i == 0) {
+                    $('#menu').accordion('add', {
+                        id :e.id,
+                        title: e.text,
+                        iconCls: e.iconCls,
+                        selected:true,
+                        content: '<ul name="'+e.text+'"></ul>'
+                    });
+                }
+                else {
+                    $('#menu').accordion('add', {
+                        id: e.id,
+                        title: e.text,
+                        iconCls: e.iconCls,
+                        selected: false,
+                        content: '<ul name="' + e.text + '"></ul>'
+                    });
+                }
+            });
+        }
+    });
+    //异步加载子节点，即二级菜单  
+    $('#menu').accordion({
+        onSelect: function (title, index) {
+            $("ul[name='" + title + "']").tree({
+                url: 'Home/InitChildMenu',
+                queryParams: {
+                    menuName: title
+                },
+                animate: true,    
+                onClick: function (node) {// 在用户点击一个子节点即二级菜单时触发addTab()方法,用于添加tabs  
+                    if (node.attributes) {//判断url是否存在，存在则创建tabs  
+                        var tabTitle = node.text;
+                        var url = node.attributes;
+                        var icon = node.iconCls;
+                        addTab(tabTitle, url, icon);
+                    }
+                }
+            });
+        }
+    });
 }
-
 function addTab(subtitle, url, icon) {
     if (!$('#tabs').tabs('exists', subtitle)) {
         $('#tabs').tabs('add', {
@@ -173,8 +188,7 @@ function TabsMenuRight() {
     $('#m-tabcloseright').click(function () {
         var nextall = $('.tabs-selected').nextAll();
         if (nextall.length == 0) {
-            //msgShow('系统提示','后边没有啦~~','error');
-            alert('后边没有啦~~');
+            $.messager.alert('系统提示', '后边没有啦~~','warning');
             return false;
         }
         nextall.each(function (i, n) {
@@ -187,7 +201,7 @@ function TabsMenuRight() {
     $('#m-tabcloseleft').click(function () {
         var prevall = $('.tabs-selected').prevAll();
         if (prevall.length == 0) {
-            alert('到头了，前边没有啦~~');
+            $.messager.alert('系统提示', '到头了，前边没有啦~~', 'warning');
             return false;
         }
         prevall.each(function (i, n) {
