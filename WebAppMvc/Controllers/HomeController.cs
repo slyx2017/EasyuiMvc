@@ -1,4 +1,5 @@
 ﻿using Common;
+using ModelEF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace WebAppMvc.Controllers
 {
     public class HomeController : Controller
     {
-        OADBEntities db = new OADBEntities();
+        AchieveDBEntities db = new AchieveDBEntities();
         // GET: Home
         public ActionResult Index()
         {
@@ -32,19 +33,19 @@ namespace WebAppMvc.Controllers
             try
             {
                 int id = int.Parse(pid);
-                var temp = from u in db.Sys_Menu
-                           where u.ParentID == id && u.IsInUse==1
+                var temp = from u in db.tbMenu
+                           where u.ParentId == id 
                            select u;
                 MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
                 foreach (var item in temp)
                 {
                     menu = new MenuModel();
-                    menu.id = item.ID;
-                    menu.text = item.MenuName;
-                    menu.attributes = item.MenuUrl;
-                    menu.iconCls= "icon-search";
-                    menu.state= temp.Select(u => u.ParentID == item.ID).Count() > 0 ? "open" : "closed";
+                    menu.id = item.Id;
+                    menu.text = item.Name;
+                    menu.attributes = item.LinkAddress;
+                    menu.iconCls= item.Icon;
+                    menu.state= temp.Select(u => u.ParentId == item.Id).Count() > 0 ? "open" : "closed";
                     list.Add(menu);
                 }
                
@@ -62,23 +63,23 @@ namespace WebAppMvc.Controllers
             {
                 //OADBEntities db = new OADBEntities();
 
-                var rows= from s in db.Sys_Menu
-                          where s.MenuName == menuName
-                          select new { s.ID };
-                int id = rows.ToList()[0].ID;
-                var temp = from u in db.Sys_Menu
-                           where u.ParentID == id && u.IsInUse == 1
+                var rows= from s in db.tbMenu
+                          where s.Name == menuName
+                          select new { s.Id };
+                int id = rows.ToList()[0].Id;
+                var temp = from u in db.tbMenu
+                           where u.ParentId == id
                            select u;
                 MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
                 foreach (var item in temp)
                 {
                     menu = new MenuModel();
-                    menu.id = item.ID;
-                    menu.text = item.MenuName;
-                    menu.attributes = item.MenuUrl;
-                    menu.iconCls = "tree-file";
-                    menu.state = temp.Select(u => u.ParentID == item.ID).Count() > 0 ? "open" : "closed";
+                    menu.id = item.Id;
+                    menu.text = item.Name;
+                    menu.attributes = item.LinkAddress;
+                    menu.iconCls = item.Icon;
+                    menu.state = temp.Select(u => u.ParentId == item.Id).Count() > 0 ? "open" : "closed";
                     list.Add(menu);
                 }
 

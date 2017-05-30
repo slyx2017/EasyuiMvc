@@ -1,9 +1,0 @@
-D:\MyProduct\WebMvc\Model\bin\Debug\Model.dll.config
-D:\MyProduct\WebMvc\Model\bin\Debug\Model.dll
-D:\MyProduct\WebMvc\Model\bin\Debug\Model.pdb
-D:\MyProduct\WebMvc\Model\bin\Debug\EntityFramework.dll
-D:\MyProduct\WebMvc\Model\bin\Debug\EntityFramework.xml
-D:\MyProduct\WebMvc\Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
-D:\MyProduct\WebMvc\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-D:\MyProduct\WebMvc\Model\obj\Debug\Model.dll
-D:\MyProduct\WebMvc\Model\obj\Debug\Model.pdb

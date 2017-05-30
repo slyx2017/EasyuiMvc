@@ -497,6 +497,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -541,6 +542,7 @@
     <Content Include="Models\OADBEF.edmx.diagram">
       <DependentUpon>OADBEF.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Menu\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -558,6 +560,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{72834930-35fd-4d80-afbb-545285a16a75}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelEF\ModelEF.csproj">
+      <Project>{91929338-7e00-482f-ae7d-6e4dadb335ee}</Project>
+      <Name>ModelEF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

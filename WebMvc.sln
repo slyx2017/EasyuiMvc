@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMvc", "WebAppMvc\WebAppMvc.csproj", "{44DD1999-AF19-49B8-B122-D3C8019FA83F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{72834930-35FD-4D80-AFBB-545285A16A75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelEF", "ModelEF\ModelEF.csproj", "{91929338-7E00-482F-AE7D-6E4DADB335EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{72834930-35FD-4D80-AFBB-545285A16A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72834930-35FD-4D80-AFBB-545285A16A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72834930-35FD-4D80-AFBB-545285A16A75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91929338-7E00-482F-AE7D-6E4DADB335EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91929338-7E00-482F-AE7D-6E4DADB335EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91929338-7E00-482F-AE7D-6E4DADB335EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91929338-7E00-482F-AE7D-6E4DADB335EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
