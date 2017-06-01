@@ -28,7 +28,7 @@ namespace WebAppMvc.Controllers
                 return null;
             }
         }
-        public ActionResult InitMenu(string pid)
+        public ActionResult InitMenu(string pid="0")
         {
             try
             {
@@ -70,6 +70,7 @@ namespace WebAppMvc.Controllers
                 var temp = from u in db.tbMenu
                            where u.ParentId == id
                            select u;
+                temp = temp.OrderBy(s => s.Sort);
                 MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
                 foreach (var item in temp)

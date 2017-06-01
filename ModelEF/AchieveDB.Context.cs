@@ -25,6 +25,8 @@ namespace ModelEF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbMenu> tbMenu { get; set; }
+        public  DbSet<tbMenu> tbMenu { get; set; }
+        public  DbSet<tbIcons> tbIcons { get; set; }
+        public  DbSet<tbUser> tbUser { get; set; }
     }
 }

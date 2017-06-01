@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9282f28dbd914dadb129f45eed7e3199" Name="Diagram1">
         <EntityTypeShape EntityType="AchieveDBModel.tbMenu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AchieveDBModel.tbIcons" Width="1.5" PointX="5.5" PointY="0.75" />
+        <EntityTypeShape EntityType="AchieveDBModel.tbUser" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

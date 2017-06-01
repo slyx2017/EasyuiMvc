@@ -3,3 +3,10 @@ D:\MyProduct\WebMvc\Common\bin\Debug\Common.pdb
 D:\MyProduct\WebMvc\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\MyProduct\WebMvc\Common\obj\Debug\Common.dll
 D:\MyProduct\WebMvc\Common\obj\Debug\Common.pdb
+D:\MyProduct\EasyuiMvc\Common\bin\Debug\Common.dll
+D:\MyProduct\EasyuiMvc\Common\bin\Debug\Common.pdb
+D:\MyProduct\EasyuiMvc\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\MyProduct\EasyuiMvc\Common\obj\Debug\Common.dll
+D:\MyProduct\EasyuiMvc\Common\obj\Debug\Common.pdb
+D:\MyProduct\EasyuiMvc\WebAppMvc\bin\Common.dll
+D:\MyProduct\EasyuiMvc\WebAppMvc\bin\Common.pdb

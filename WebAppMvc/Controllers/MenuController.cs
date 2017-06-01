@@ -15,16 +15,51 @@ namespace WebAppMvc.Controllers
         {
             return View();
         }
+        public ActionResult InitMenu(string pid = "0")
+        {
+            try
+            {
+                int id = int.Parse(pid);
+                var temp = from u in db.tbMenu
+                           where u.ParentId == id
+                           select u;
+                MenuModel menu = null;
+                List<MenuModel> list = new List<MenuModel>();
+                foreach (var item in temp)
+                {
+                    menu = new MenuModel();
+                    menu.id = item.Id;
+                    menu.text = item.Name;
+                    menu.attributes = item.LinkAddress;
+                    menu.iconCls = item.Icon;
+                    menu.state = temp.Select(u => u.ParentId == item.Id).Count() > 0 ? "open" : "closed";
+                    list.Add(menu);
+                }
+
+
+                return Json(list);
+            }
+            catch (Exception ex)
+            {
+                return Json("0", JsonRequestBehavior.AllowGet);
+            }
+        }
         public ActionResult GetJson()
         {
             int pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
+            string searchName = Request["MenuName"] == null ? "" : Request["MenuName"];
             int total = 0;
-
             var temp = from u in db.tbMenu select u;
+            //根据查询条件检索
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                //根据姓名模糊查询
+                temp = temp.Where(s => s.Name.Contains(searchName));
+            }
+
             total = temp.Count();
-            var menus = temp.OrderByDescending(s => s.Id)
-                 .Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var menus = temp.OrderBy(s=>s.ParentId).ThenBy(s=>s.Sort).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var data = new
             {
                 total = total,
@@ -39,7 +74,7 @@ namespace WebAppMvc.Controllers
         }
 
         // GET: Menu/Create
-        public ActionResult Create()
+        public ActionResult MenuAdd()
         {
             return View();
         }
