@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="ui_menu_layout" class="easyui-layout" data-options="fit:true,border:false">
+        <div data-options="region:'north',split:true,border:true" title="搜索条件" style="height:100px">
+            <div id="ui_menu_search">
+                <table class="tableForm" style="height:56px;">
+                    <tr>
+                        <th height="20px">
+                            菜单名：
+                        </th>
+                        <td>
+                            <input name="txtSearchMenuName" id="txtSearchMenuName" class="easyui-validatebox textbox" style="width:170px;height:22px;" />
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" class="easyui-linkbutton" iconcls="icon-search" plain="true"
+                               onclick="searchdata();">搜索</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="AddMenu()">添加</a>
+                            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a>
+                            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div data-options="region:'center',border:false">
+            <table id="ui_menu_dg" data-options="fit:true,border:false"></table>
+        </div>
+    </div>
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.easyui.min.js"></script>
+    <script src="~/Content/js/easyui-lang-zh_CN.js"></script>
+    <script src="~/Content/js/initmenu.js"></script>
+</body>
+</html>
