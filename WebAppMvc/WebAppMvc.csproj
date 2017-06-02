@@ -118,6 +118,7 @@
     <Content Include="Content\js\jquery.easyui.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\loadIcons.js" />
+    <Content Include="Content\js\loaduserjs.js" />
     <Content Include="Content\js\loginjs.js" />
     <Content Include="Content\themes\black\accordion.css" />
     <Content Include="Content\themes\black\calendar.css" />
@@ -2003,6 +2004,7 @@
     <Compile Include="Controllers\IconsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2051,6 +2053,7 @@
     <Content Include="Views\Menu\MenuAdd.cshtml" />
     <Content Include="Views\Icons\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
