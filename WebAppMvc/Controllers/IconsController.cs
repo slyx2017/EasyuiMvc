@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace WebAppMvc.Controllers
 {
-    public class IconsController : Controller
+    public class IconsController : BaseController
     {
         AchieveDBEntities db = new AchieveDBEntities();
         // GET: Icons

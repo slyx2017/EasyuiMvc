@@ -53,7 +53,7 @@ function createAccrodion() {
     //获取第一层初始目录 
     $.ajax({
         type: "post",
-        url: "Home/InitMenu",
+        url: "/Home/InitMenu",
         data: { "pid": "0" },
         success: function (data) {
             $.each(data, function (i, e) {
@@ -83,7 +83,7 @@ function createAccrodion() {
     $('#menu').accordion({
         onSelect: function (title, index) {
             $("ul[name='" + title + "']").tree({
-                url: 'Home/InitChildMenu',
+                url: '/Home/InitChildMenu',
                 queryParams: {
                     menuName: title
                 },
@@ -530,4 +530,22 @@ function autoAddClear() {
             addClear4Datetimebox("#" + theId);
         }
     }
+}
+
+//退出系统
+function UserLoginOut() {
+    $.ajax({
+        url: "/Login/UserLoginOut",
+        type: "post",
+        dataType: "json",
+        success: function (result) {
+            if (result.Statu=="ok") {
+                window.location.href = result.BackUrl;
+            }
+            else {
+                $.messager.alert("系统提示", result.Msg);
+                return;
+            }
+        }
+    })
 }

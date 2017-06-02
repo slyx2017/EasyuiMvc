@@ -1,4 +1,5 @@
-﻿using ModelEF;
+﻿using Common;
+using ModelEF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,15 +51,16 @@ namespace WebAppMvc.Controllers
                     //2.1.2 将用户id加密成字符串
                     string strCookieValue = Common.SecurityHelper.EncryptUserInfo(usr.ID.ToString());
                     //2.1.3 创建cookie
-                    HttpCookie cookie = new HttpCookie("ainfo", strCookieValue);
-                    cookie.Expires = DateTime.Now.AddDays(1);
-                    cookie.Path = "/admin";
-                    Response.Cookies.Add(cookie);
+                    //HttpCookie cookie = new HttpCookie("ainfo", strCookieValue);
+                    //cookie.Expires = DateTime.Now.AddDays(1);
+                    //cookie.Path = "/admin";
+                    //Response.Cookies.Add(cookie);
+                    //记录登录cookie
+                    CookiesHelper.SetCookie("ainfo",null,strCookieValue, DateTime.Now.AddDays(1),null);
                 }
                 //2.2 查询当前用户的权限 ， 并将权限存入Session 中
                 //List<MODEL.Ou_Permission> listPers = OperateContext.GetUserPermission(usr.uId);
                 //Session["uPermission"] = listPers;
-
                 ajaxM.Statu = "ok";
                 ajaxM.Msg = "登录成功！";
                 ajaxM.BackUrl = "/Home/Index";
@@ -66,5 +68,17 @@ namespace WebAppMvc.Controllers
             return Json(ajaxM);
         }
         #endregion
+
+        public ActionResult UserLoginOut()
+        {
+            ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "退出录败！" };
+            //清空cookie
+            CookiesHelper.AddCookie("ainfo", DateTime.Now.AddDays(-1));
+            Session.Clear();
+            ajaxM.Statu = "ok";
+            ajaxM.Msg = "退出成功！";
+            ajaxM.BackUrl = "/Login/Login";
+            return Json(ajaxM);
+        }
     }
 }

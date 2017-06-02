@@ -6,36 +6,42 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebAppMvc.Models;
+using WebAppMvcHelper;
 
 namespace WebAppMvc.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        AchieveDBEntities db = new AchieveDBEntities();
+        //AchieveDBEntities db = new AchieveDBEntities();
         // GET: Home
         public ActionResult Index()
         {
-            try
-            {
-                string filepath = Server.MapPath("~/App_Data/tree_data1.json");
-                ViewBag.Tree = GetFile.GetFileJson(filepath);
-                filepath = Server.MapPath("~/App_Data/datagrid_data1.json");
-                ViewBag.Json = GetFile.GetFileJson(filepath);
-                return View();
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            //try
+            //{
+            //    string filepath = Server.MapPath("~/App_Data/tree_data1.json");
+            //    ViewBag.Tree = GetFile.GetFileJson(filepath);
+            //    filepath = Server.MapPath("~/App_Data/datagrid_data1.json");
+            //    ViewBag.Json = GetFile.GetFileJson(filepath);
+            //    return View();
+            //}
+            //catch (Exception ex)
+            //{
+            //    return null;
+            //}
+            tbUser usr = Session["ainfo"] as tbUser;
+            ViewBag.AccountName = usr.AccountName;
+            return View();
         }
         public ActionResult InitMenu(string pid="0")
         {
             try
             {
+                
                 int id = int.Parse(pid);
-                var temp = from u in db.tbMenu
-                           where u.ParentId == id 
-                           select u;
+                var temp = OperateContext.BLLSession.ItbMenuBLL.GetListBy(u => u.ParentId == id);
+                //var temp = from u in db.tbMenu
+                //           where u.ParentId == id 
+                //           select u;
                 MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
                 foreach (var item in temp)
@@ -50,7 +56,7 @@ namespace WebAppMvc.Controllers
                 }
                
                
-                return Json(list);
+                return Json(list, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -61,16 +67,16 @@ namespace WebAppMvc.Controllers
         {
             try
             {
-                //OADBEntities db = new OADBEntities();
-
-                var rows= from s in db.tbMenu
-                          where s.Name == menuName
-                          select new { s.Id };
-                int id = rows.ToList()[0].Id;
-                var temp = from u in db.tbMenu
-                           where u.ParentId == id
-                           select u;
-                temp = temp.OrderBy(s => s.Sort);
+                List<tbMenu> list_tb = OperateContext.BLLSession.ItbMenuBLL.GetListBy(u => u.Name == menuName);
+                //var rows= from s in db.tbMenu
+                //          where s.Name == menuName
+                //          select new { s.Id };
+                int id = list_tb[0].Id;
+                //var temp = from u in db.tbMenu
+                //           where u.ParentId == id
+                //           select u;
+                List<tbMenu> temp = OperateContext.BLLSession.ItbMenuBLL.GetListBy(u => u.ParentId == id);
+                //temp = temp.OrderBy(s => s.Sort);
                 MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
                 foreach (var item in temp)

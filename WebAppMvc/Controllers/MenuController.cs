@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppMvcHelper;
 
 namespace WebAppMvc.Controllers
 {
-    public class MenuController : Controller
+    public class MenuController : BaseController
     {
-        AchieveDBEntities db = new AchieveDBEntities();
         // GET: Menu
         public ActionResult Index()
         {
@@ -20,9 +20,10 @@ namespace WebAppMvc.Controllers
             try
             {
                 int id = int.Parse(pid);
-                var temp = from u in db.tbMenu
-                           where u.ParentId == id
-                           select u;
+                List<tbMenu> temp = OperateContext.BLLSession.ItbMenuBLL.GetListBy(u => u.ParentId == id);
+                //var temp = from u in db.tbMenu
+                //           where u.ParentId == id
+                //           select u;
                 MenuModel menu = null;
                 List<MenuModel> list = new List<MenuModel>();
                 foreach (var item in temp)
@@ -50,12 +51,13 @@ namespace WebAppMvc.Controllers
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             string searchName = Request["MenuName"] == null ? "" : Request["MenuName"];
             int total = 0;
-            var temp = from u in db.tbMenu select u;
+            List<tbMenu> temp =OperateContext.BLLSession.ItbMenuBLL.GetListBy(u=>u.Id!=-1);
+            //var temp = from u in db.tbMenu select u;
             //根据查询条件检索
             if (!string.IsNullOrEmpty(searchName))
             {
                 //根据姓名模糊查询
-                temp = temp.Where(s => s.Name.Contains(searchName));
+                temp = temp.Where(s => s.Name.Contains(searchName)).ToList();
             }
 
             total = temp.Count();
