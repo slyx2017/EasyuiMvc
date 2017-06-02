@@ -10,7 +10,7 @@ function LoginUserInfo() {
         url: "/Login/Login",
         type: "POST",
         dataType: "json",
-        data: { "Name": $("#UserName").val(), "Password": $("#Password").val(), "isAllway": $("#isAllway").val() },
+        data: { "UserName": $("#UserName").val(), "Password": $("#Password").val(), "isAllway": $("#isAllway").val() },
         success: function (data) {
             if (data.Statu == "ok") {
                 window.location.href = data.BackUrl;
@@ -19,6 +19,15 @@ function LoginUserInfo() {
                 $.messager.alert("系统提示", "登录失败，请重新登录！");
                 return;
             }
+        }
+        ,
+        beforeSend: function (data) {
+            $('#divMsg').dialog('open')
+            //$("#divMsg").css("display", "block");
+        },
+        complete: function (data) {
+            $('#divMsg').dialog('close')
+            //$("#divMsg").css("display", "none");
         }
     });
 }

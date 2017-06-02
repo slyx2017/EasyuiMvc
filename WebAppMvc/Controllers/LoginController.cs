@@ -13,9 +13,9 @@ namespace WebAppMvc.Controllers
     {
         //AchieveDBEntities db = new AchieveDBEntities();
         // GET: Login
-        public ActionResult Index()
+        public ActionResult LoginOK()
         {
-            return View();
+            return View("LoginOK");
         }
         // GET: Login
         public ActionResult Login()
@@ -33,7 +33,7 @@ namespace WebAppMvc.Controllers
             ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "失登录败！" };
 
             //1.1 获取数据
-            string strName = Request.Params["Name"];
+            string strName = Request.Params["UserName"];
             string strPwd = Request.Params["Password"];
             //1.2 验证
 
@@ -63,7 +63,7 @@ namespace WebAppMvc.Controllers
                 //Session["uPermission"] = listPers;
                 ajaxM.Statu = "ok";
                 ajaxM.Msg = "登录成功！";
-                ajaxM.BackUrl = "/Home/Index";
+                ajaxM.BackUrl = "/Home/Index";//"/Login/LoginOK";
             }
             return Json(ajaxM);
         }
