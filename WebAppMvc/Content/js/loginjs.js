@@ -22,12 +22,22 @@ function LoginUserInfo() {
         }
         ,
         beforeSend: function (data) {
-            $('#divMsg').dialog('open')
-            //$("#divMsg").css("display", "block");
+            progressBar("");
         },
         complete: function (data) {
-            $('#divMsg').dialog('close')
-            //$("#divMsg").css("display", "none");
+            progressBar("close");
         }
     });
+}
+function progressBar(obj) {
+    if (obj=="") {
+        $.messager.progress({
+            //title: '登录',
+            //msg: '正在登录...',
+            text: '正在登录...'
+        });
+    }
+    else {
+        $.messager.progress('close');
+    }
 }
