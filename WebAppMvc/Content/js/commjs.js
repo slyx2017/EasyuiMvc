@@ -60,11 +60,11 @@ function createAccrodion() {
                 //var id = e.id;
                 if (i == 0) {
                     $('#menu').accordion('add', {
-                        id :e.id,
+                        id: e.id,
                         title: e.text,
                         iconCls: e.iconCls,
-                        selected:true,
-                        content: '<ul name="'+e.text+'"></ul>'
+                        selected: true,
+                        content: '<ul name="' + e.text + '"></ul>'
                     });
                 }
                 else {
@@ -87,7 +87,7 @@ function createAccrodion() {
                 queryParams: {
                     menuName: title
                 },
-                animate: true,    
+                animate: true,
                 onClick: function (node) {// 在用户点击一个子节点即二级菜单时触发addTab()方法,用于添加tabs  
                     if (node.attributes) {//判断url是否存在，存在则创建tabs  
                         var tabTitle = node.text;
@@ -188,7 +188,7 @@ function TabsMenuRight() {
     $('#m-tabcloseright').click(function () {
         var nextall = $('.tabs-selected').nextAll();
         if (nextall.length == 0) {
-            $.messager.alert('系统提示', '后边没有啦~~','warning');
+            $.messager.alert('系统提示', '后边没有啦~~', 'warning');
             return false;
         }
         nextall.each(function (i, n) {
@@ -534,18 +534,87 @@ function autoAddClear() {
 
 //退出系统
 function UserLoginOut() {
-    $.ajax({
-        url: "/Login/UserLoginOut",
-        type: "post",
-        dataType: "json",
-        success: function (result) {
-            if (result.Statu=="ok") {
-                window.location.href = result.BackUrl;
-            }
-            else {
-                $.messager.alert("系统提示", result.Msg);
-                return;
-            }
+    $.messager.confirm("系统提示", "您确定要退出吗?", function (rt) {
+        if (rt) {
+            $.ajax({
+                url: "/Login/UserLoginOut",
+                type: "post",
+                dataType: "json",
+                success: function (result) {
+                    if (result.Statu == "ok") {
+                        window.location.href = result.BackUrl;
+                    }
+                    else {
+                        $.messager.alert("系统提示", result.Msg);
+                        return;
+                    }
+                }
+            })
+        }
+        else {
+            return;
         }
     })
+}
+//日期格式正确显示
+function formatDatebox(value) {
+    if (value == null || value == '') {
+        return '';
+    }
+    var dt;
+    if (value instanceof Date) {
+        dt = value;
+    }
+    else {
+        dt = new Date(value);
+        if (isNaN(dt)) {
+            value = eval(value.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"));//(/\/Date(−?\d+)\//, 'new Date($1)'); //标红的这段是关键代码，将那个长字符串的日期值转换成正常的JS日期格式  
+            dt = new Date();
+            dt.setTime(value);
+        }
+    }
+
+    return dt.format("yyyy-MM-dd");   //这里用到一个javascript的Date类型的拓展方法，这个是自己添加的拓展方法，在后面的步骤3定义  
+}
+//扩展datagrid编辑日期格式正确显示
+$.extend(
+    $.fn.datagrid.defaults.editors, {
+        datebox: {
+            init: function (container, options) {
+                var input = $('').appendTo(container);
+                input.datebox(options);
+                return input;
+            },
+            destroy: function (target) {
+                $(target).datebox('destroy');
+            },
+            getValue: function (target) {
+                return $(target).datebox('getValue');
+            },
+            setValue: function (target, value) {
+                $(target).datebox('setValue', formatDatebox(value));
+            },
+            resize: function (target, width) {
+                $(target).datebox('resize', width);
+            }
+        }
+    });
+//为原始Date类型拓展format一个方法，用于日期显示的格式化
+Date.prototype.format = function (format) {
+    var o = {
+        "M+": this.getMonth() + 1, //month   
+        "d+": this.getDate(),    //day   
+        "h+": this.getHours(),   //hour   
+        "m+": this.getMinutes(), //minute   
+        "s+": this.getSeconds(), //second   
+        "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter   
+        "S": this.getMilliseconds() //millisecond   
+    }
+    if (/(y+)/.test(format)) format = format.replace(RegExp.$1,
+    (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o) if (new RegExp("(" + k + ")").test(format))
+        format = format.replace(RegExp.$1,
+      RegExp.$1.length == 1 ? o[k] :
+        ("00" + o[k]).substr(("" + o[k]).length));
+    return format;
 }

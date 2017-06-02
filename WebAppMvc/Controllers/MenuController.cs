@@ -51,17 +51,9 @@ namespace WebAppMvc.Controllers
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             string searchName = Request["MenuName"] == null ? "" : Request["MenuName"];
             int total = 0;
-            List<tbMenu> temp =OperateContext.BLLSession.ItbMenuBLL.GetListBy(u=>u.Id!=-1);
-            //var temp = from u in db.tbMenu select u;
-            //根据查询条件检索
-            if (!string.IsNullOrEmpty(searchName))
-            {
-                //根据姓名模糊查询
-                temp = temp.Where(s => s.Name.Contains(searchName)).ToList();
-            }
-
+            List<tbMenu> temp = OperateContext.BLLSession.ItbMenuBLL.GetPagedList(pageIndex, pageSize, s => s.Name.Contains(searchName), s => s.ParentId);
             total = temp.Count();
-            var menus = temp.OrderBy(s=>s.ParentId).ThenBy(s=>s.Sort).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var menus = temp.OrderBy(s=>s.ParentId).ThenBy(s=>s.Sort);
             var data = new
             {
                 total = total,

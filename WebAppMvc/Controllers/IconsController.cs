@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppMvcHelper;
 
 namespace WebAppMvc.Controllers
 {
     public class IconsController : BaseController
     {
-        AchieveDBEntities db = new AchieveDBEntities();
         // GET: Icons
         public ActionResult Index()
         {
@@ -21,20 +21,12 @@ namespace WebAppMvc.Controllers
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             string searchName = Request["IconName"] == null ? "" : Request["IconName"];
             int total = 0;
-            var temp = from u in db.tbIcons select u;
-            //根据查询条件检索
-            if (!string.IsNullOrEmpty(searchName))
-            {
-                //根据姓名模糊查询
-                temp = temp.Where(s => s.IconName.Contains(searchName));
-            }
-
+            List<tbIcons> temp = OperateContext.BLLSession.ItbIconsBLL.GetPagedList(pageIndex,pageSize,s => s.IconName.Contains(searchName),s=>s.Id);
             total = temp.Count();
-            var icons = temp.OrderByDescending(s => s.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var data = new
             {
                 total = total,
-                rows = icons.ToList()
+                rows = temp//icons.ToList()
             };
             return Json(data, JsonRequestBehavior.AllowGet);
         }
@@ -46,7 +38,8 @@ namespace WebAppMvc.Controllers
         {
             try
             {
-                var iconsObj = from u in db.tbIcons select u;
+                List<tbIcons> iconsObj = OperateContext.BLLSession.ItbIconsBLL.GetListBy(u => u.Id != -1);
+                //var iconsObj = from u in db.tbIcons select u;
                 IconModel icon = null;
                 List<IconModel> list = new List<IconModel>();
                 foreach (var item in iconsObj)
@@ -58,7 +51,7 @@ namespace WebAppMvc.Controllers
                     list.Add(icon);
                 }
                 
-                return Json(list);
+                return Json(list, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

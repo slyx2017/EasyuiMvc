@@ -14,7 +14,7 @@
                    { field: 'LinkAddress', title: '链接地址', width: 200 },
                    { field: 'Icon', title: '图标', width: 150 },
                    { field: 'Sort', title: '排序', width: 80 },
-                   { field: 'UpdateTime', title: '最后更新时间', width: 130 },
+                   { field: 'UpdateTime', title: '最后更新时间', width: 130, formatter: formatDatebox },
                    { field: 'UpdateBy', title: '最后更新人', width: 100 }
         ]]
     });

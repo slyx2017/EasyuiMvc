@@ -10,9 +10,9 @@
                         { field: 'IconCssInfo', title: '图标信息', width: 200 }]],
         columns: [[
                    { field: 'CreateBy', title: '创建人', width: 80 },
-                   { field: 'CreateTime', title: '创建时间', width: 120 },
+                   { field: 'CreateTime', title: '创建时间', width: 120, formatter: formatDatebox },
                    { field: 'UpdateBy', title: '最后更新人', width: 130 },
-                   { field: 'UpdateTime', title: '最后更新时间', width: 150 }
+                   { field: 'UpdateTime', title: '最后更新时间', width: 150, formatter: formatDatebox }
         ]]
     });
 
