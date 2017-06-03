@@ -3335,7 +3335,7 @@
 }
 
 .icon-lock {
-    background: url('icon/lock.png') no-repeat;
+    background: url('icon/lock.png') no-repeat center center;
 }
 
 .icon-lock_add {
@@ -6153,4 +6153,9 @@
 .icon-mini-refresh{
 	background:url('icon/mini_refresh.png') no-repeat center center;
 }
+
+.icon-man {
+    background:url('icon/man.png') no-repeat center center;
+}
+
 
