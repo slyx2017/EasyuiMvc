@@ -2056,6 +2056,8 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Login\LoginOK.cshtml" />
+    <Content Include="Views\User\UserAdd.cshtml" />
+    <Content Include="Views\User\UserEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

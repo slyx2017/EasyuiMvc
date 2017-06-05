@@ -79,13 +79,14 @@ function AddUser() {
                     },
                     success: function (data) {
                         var dataJson = eval('(' + data + ')');
-                        if (dataJson.success) {
+                        if (dataJson.Statu=="ok") {
                             $("#ui_user_add_dialog").dialog('destroy');
-                            $.show_alert("提示", dataJson.msg);
+                            $.messager.alert("提示", dataJson.Msg,"info");
                             $("#ui_user_dg").datagrid("reload").datagrid('clearSelections').datagrid('clearChecked');
                         } else {
                             $('#ui_user_add_btn').linkbutton('enable');
-                            $.show_alert("提示", dataJson.msg);
+                            $.messager.alert("提示", dataJson.Msg,"error");
+                            return;
                         }
                     }
                 });
@@ -109,11 +110,11 @@ function AddUser() {
 function EditUser() {
     var row = $("#ui_user_dg").datagrid("getChecked");
     if (row.length < 1) {
-        $.show_alert("提示", "请先勾选要修改的用户");
+        $.messager.alert("提示", "请先勾选要修改的用户","warning");
         return;
     }
     if (row.length > 1) {
-        $.show_alert("提示", "不支持批量修改用户");
+        $.messager.alert("提示", "不支持批量修改用户", "warning");
         $("#ui_user_dg").datagrid('clearSelections').datagrid('clearChecked');
         return;
     }
@@ -151,13 +152,14 @@ function EditUser() {
                     },
                     success: function (data) {
                         var dataJson = eval('(' + data + ')');
-                        if (dataJson.success) {
+                        if (dataJson.Statu == "ok") {
                             $("#ui_user_edit_dialog").dialog('destroy');
-                            $.show_alert("提示", dataJson.msg);
+                            $.messager.alert("提示", dataJson.Msg,"info");
                             $("#ui_user_dg").datagrid("reload").datagrid('clearSelections').datagrid('clearChecked');
                         } else {
                             $('#ui_user_edit_btn').linkbutton('enable');
-                            $.show_alert("提示", dataJson.msg);
+                            $.messager.alert("提示", dataJson.Msg, "error");
+                            return;
                         }
                     }
                 });
@@ -193,7 +195,7 @@ function EditUser() {
 function DelUser() {
     var rows = $("#ui_user_dg").datagrid("getChecked");
     if (rows.length < 1) {
-        $.show_alert("提示", "请先勾选要删除的用户");
+        $.messager.alert("提示", "请先勾选要删除的用户", "warning");
         return;
     }
     $.messager.confirm('提示', '确定删除选中行吗？', function (r) {
@@ -211,11 +213,12 @@ function DelUser() {
                 type: "POST",
                 dataType: "json",
                 success: function (data) {
-                    if (data.success) {
-                        $.show_alert("提示", data.msg);
+                    if (data.Statu=="ok") {
+                        $.messager.alert("提示", data.Msg,"info");
                         $("#ui_user_dg").datagrid("reload").datagrid('clearSelections').datagrid('clearChecked');
                     } else {
-                        $.show_alert("提示", data.msg);
+                        $.messager.alert("提示", data.Msg);
+                        return;
                     }
                 }
             });
