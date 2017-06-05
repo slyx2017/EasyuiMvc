@@ -16,7 +16,12 @@ namespace BLL
         /// <returns></returns>
         public ModelEF.tbUser Login(string strName,string strPwd)
         {
-            ModelEF.tbUser usr = base.GetListBy(u => u.AccountName == strName).Select(u=>u.ToPOCO()).First();
+            int Count = GetListBy(u => u.AccountName == strName).Count;
+            ModelEF.tbUser usr = null;
+            if (Count>0)
+            {
+                usr = base.GetListBy(u => u.AccountName == strName).Select(u => u.ToPOCO()).First();
+            }
             if (usr != null && usr.Password == Common.CommonHelper.Md5Hash(strPwd))
             {
                 return usr;
