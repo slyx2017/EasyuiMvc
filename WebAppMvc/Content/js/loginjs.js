@@ -13,9 +13,11 @@ function LoginUserInfo() {
         data: { "UserName": $("#UserName").val(), "Password": $("#Password").val(), "isAllway": $("#isAllway").val() },
         success: function (data) {
             if (data.Statu == "ok") {
+                progressBar("close");
                 window.location.href = data.BackUrl;
             }
             else {
+                progressBar("close");
                 $.messager.alert("系统提示", "登录失败，请重新登录！");
                 return;
             }
@@ -23,10 +25,11 @@ function LoginUserInfo() {
         ,
         beforeSend: function (data) {
             progressBar("");
-        },
-        complete: function (data) {
-            progressBar("close");
         }
+        //,
+        //complete: function (data) {
+        //    progressBar("close");
+        //}
     });
 }
 function progressBar(obj) {
