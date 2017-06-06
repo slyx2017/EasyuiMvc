@@ -17,6 +17,20 @@ namespace DALMSSQL
         /// </summary>
         DbContext db= new DBContextFactory().GetDbContext();// = new MODEL.OuOAEntities();
 
+        public int DelList(List<T> model)
+        {
+            //3.1查询要删除的数据
+            List<T> listDeleting = model;
+            //3.2将要删除的数据 用删除方法添加到 EF 容器中
+            listDeleting.ForEach(u =>
+            {
+                db.Set<T>().Attach(u);//先附加到 EF容器
+                db.Set<T>().Remove(u);//标识为 删除 状态
+            });
+            //3.3一次性 生成sql语句到数据库执行删除
+            return db.SaveChanges();
+        }
+
         #region 1.0 新增 实体 +int Add(T model)
         /// <summary>
         /// 新增 实体
