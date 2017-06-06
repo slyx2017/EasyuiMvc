@@ -91,9 +91,9 @@ namespace DALMSSQL
         }
         #endregion
 
-        #region 4.0 批量修改 +int Modify(T model, Expression<Func<T, bool>> whereLambda, params string[] modifiedProNames)
+        #region 4.1 批量修改 +int Modify(T model, Expression<Func<T, bool>> whereLambda, params string[] modifiedProNames)
         /// <summary>
-        /// 4.0 批量修改
+        /// 4.1 批量修改
         /// </summary>
         /// <param name="model">要修改的实体对象</param>
         /// <param name="whereLambda">查询条件</param>

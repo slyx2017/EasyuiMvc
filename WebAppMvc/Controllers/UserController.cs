@@ -22,7 +22,7 @@ namespace WebAppMvc.Controllers
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             string searchName = Request["username"] == null ? "" : Request["username"];
             int total = 0;
-            List<tbUser> users = OperateContext.BLLSession.ItbUserBLL.GetPagedList(pageIndex, pageSize, s => s.AccountName.Contains(searchName), s => s.ID);
+            List<tbUser> users = OperateContext.BLLSession.ItbUserBLL.GetPagedList(pageIndex, pageSize, s => s.AccountName.Contains(searchName) && s.IsAble==true, s => s.ID);
             total = users.Count();
             var data = new
             {
@@ -93,6 +93,7 @@ namespace WebAppMvc.Controllers
         /// <returns></returns>
         public ActionResult EditUser()
         {
+            tbUser uInfo = Session["ainfo"] as tbUser;
             ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "修改失败！" };
             int id = Convert.ToInt32(Request["id"]);
             string originalName = Request["originalName"];
@@ -112,7 +113,8 @@ namespace WebAppMvc.Controllers
             userEdit.MobilePhone = Request["MobilePhone"];
             userEdit.Email = Request["Email"];
             userEdit.UpdateTime = DateTime.Now;
-            string proName = "AccountName,Password,RealName,MobilePhone,Email,IsAble ,IfChangePwd,Description,CreateBy ,CreateTime,UpdateBy,UpdateTime";
+            userEdit.UpdateBy = uInfo.AccountName;
+            string proName = "AccountName,RealName,IsAble,IfChangePwd,Description,MobilePhone,Email,UpdateBy,UpdateTime";
             string[] proNameArr = proName.Split(',');
             int userId = OperateContext.BLLSession.ItbUserBLL.ModifyBy(userEdit,u=>u.ID==id, proNameArr);
             if (userId > 0)
@@ -135,27 +137,33 @@ namespace WebAppMvc.Controllers
                 tbUser uInfo = Session["ainfo"] as tbUser;
                 var userId = uInfo.ID;
                 string Ids = Request["IDs"] == null ? "" : Request["IDs"];
-                var uIds = Ids.Split(',');
-                List<int> listUserIds = new List<int>();
-                foreach (var item in uIds)
-                {
-                    listUserIds.Add(int.Parse(item));
-                }
-                if (listUserIds.Contains(userId))
+                var uIds = Ids.Split(',').ToList();
+                if (uIds.Contains(userId.ToString()))
                 {
                     ajaxM.Msg = "含有正在使用的用户，禁止删除";
                     return Json(ajaxM);
                 }
-               
+                tbUser delInfo = new tbUser();
                 if (!string.IsNullOrEmpty(Ids))
                 {
                     int flag = 0;
-                    foreach (var id in listUserIds)
+                   foreach (var id in uIds)
                     {
-                        flag = OperateContext.BLLSession.ItbUserBLL.DelBy(u=>u.ID==id);
+                        int ID = int.Parse(id);
+                        delInfo.ID = ID;
+                        delInfo.IsAble = false;
+                        flag = OperateContext.BLLSession.ItbUserBLL.ModifyBy(delInfo,u=> u.ID== ID, "IsAble");
                     }
-                   
-                    return Json(ajaxM);
+                    if (flag>0)
+                    {
+                        ajaxM.Statu = "ok";
+                        ajaxM.Msg = "删除成功！";
+                        return Json(ajaxM);
+                    }
+                    else
+                    {
+                        return Json(ajaxM);
+                    }
                 }
                 else
                 {
