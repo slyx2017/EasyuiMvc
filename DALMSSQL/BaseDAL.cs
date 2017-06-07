@@ -65,6 +65,19 @@ namespace DALMSSQL
         }
         #endregion
 
+        #region 3.1 批量删除 +int RemoveRange(IEnumerable<T> entities)
+        /// <summary>  
+        /// 从基础化集的上下文中删除给定实体集合（每个实体都置于“已删除”状态），这样当调用 SaveChanges 时，会从数据库中删除它。  
+        /// </summary>  
+        /// <param name="entities">合集</param>  
+        /// <returns></returns>  
+        public int RemoveRange(IEnumerable<T> entities)
+        {
+            db.Set<T>().RemoveRange(entities);
+            return db.SaveChanges();
+        }
+        #endregion
+
         #region 4.0 修改 +int Modify(T model, params string[] proNames)
         /// <summary>
         /// 4.0 修改，如：

@@ -78,6 +78,11 @@ namespace BLL
             return idal.DelBy(delWhere);
         }
 
+        public int RemoveRange(IEnumerable<T> entities)
+        {
+            return idal.RemoveRange(entities);
+        }
+
         public List<T> GetListBy(Expression<Func<T, bool>> whereLambda)
         {
             return idal.GetListBy(whereLambda);

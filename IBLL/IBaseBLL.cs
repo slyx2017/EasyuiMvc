@@ -49,6 +49,15 @@ namespace IBLL
         int DelBy(Expression<Func<T, bool>> delWhere);
         #endregion
 
+        #region 3.1 批量删除 + int RemoveRange(IEnumerable<T> entities);
+        /// <summary>
+        /// 3.1 批量删除
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <returns></returns>
+        int RemoveRange(IEnumerable<T> entities);
+        #endregion
+
         #region 4.0 修改 +int Modify(T model, params string[] proNames)
         /// <summary>
         /// 4.0 修改，如：

@@ -128,8 +128,8 @@ namespace WebAppMvc.Controllers
                 return Json(ajaxM);
             }
         }
-        //删除
-        public ActionResult DelUserByIDs()
+        //伪删除
+        public ActionResult DelUserList()//DelUserByIDs()
         {
             ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "删除失败！" };
             try
@@ -155,6 +155,55 @@ namespace WebAppMvc.Controllers
                         flag = OperateContext.BLLSession.ItbUserBLL.ModifyBy(delInfo,u=> u.ID== ID, "IsAble");
                     }
                     if (flag>0)
+                    {
+                        ajaxM.Statu = "ok";
+                        ajaxM.Msg = "删除成功！";
+                        return Json(ajaxM);
+                    }
+                    else
+                    {
+                        return Json(ajaxM);
+                    }
+                }
+                else
+                {
+                    return Json(ajaxM);
+                }
+            }
+            catch (Exception ex)
+            {
+                ajaxM.Msg = ajaxM.Msg + "," + ex.Message;
+                return Json(ajaxM);
+            }
+        }
+        //真删除
+        public ActionResult DelUserByIDs()//DelUserList()
+        {
+            ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "删除失败！" };
+            try
+            {
+                tbUser uInfo = Session["ainfo"] as tbUser;
+                var userId = uInfo.ID;
+                string Ids = Request["IDs"] == null ? "" : Request["IDs"];
+                var uIds = Ids.Split(',').ToList();
+                if (uIds.Contains(userId.ToString()))
+                {
+                    ajaxM.Msg = "含有正在使用的用户，禁止删除";
+                    return Json(ajaxM);
+                }
+
+                if (!string.IsNullOrEmpty(Ids))
+                {
+                    int flag = 0;
+                    List<tbUser> uModels = new List<tbUser>();
+                    foreach (var id in uIds)
+                    {
+                        int ID = int.Parse(id);
+                        tbUser model = OperateContext.BLLSession.ItbUserBLL.GetListBy(u=>u.ID==ID).FirstOrDefault();
+                        uModels.Add(model);
+                    }
+                    flag = OperateContext.BLLSession.ItbUserBLL.RemoveRange(uModels);
+                    if (flag > 0)
                     {
                         ajaxM.Statu = "ok";
                         ajaxM.Msg = "删除成功！";
