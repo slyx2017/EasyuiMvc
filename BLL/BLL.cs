@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BLL
 {
-	public partial class tbIcons : BaseBLL<ModelEF.tbIcons>,IBLL.ItbIconsBLL
+	public partial class tbIconsBLL : BaseBLL<ModelEF.tbIcons>,IBLL.ItbIconsBLL
     {
 	    public override void SetDAL()
 		{
@@ -16,7 +16,7 @@ namespace BLL
 		}
     }
 
-	public partial class tbMenu : BaseBLL<ModelEF.tbMenu>,IBLL.ItbMenuBLL
+	public partial class tbMenuBLL : BaseBLL<ModelEF.tbMenu>,IBLL.ItbMenuBLL
     {
 	    public override void SetDAL()
 		{
@@ -24,7 +24,7 @@ namespace BLL
 		}
     }
 
-	public partial class tbUser : BaseBLL<ModelEF.tbUser>,IBLL.ItbUserBLL
+	public partial class tbUserBLL : BaseBLL<ModelEF.tbUser>,IBLL.ItbUserBLL
     {
 	    public override void SetDAL()
 		{

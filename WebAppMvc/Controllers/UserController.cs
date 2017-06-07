@@ -30,7 +30,7 @@ namespace WebAppMvc.Controllers
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             string searchName = Request["username"] == null ? "" : Request["username"];
             int total = 0;
-            List<tbUser> users = OperateContext.BLLSession.ItbUserBLL.GetPagedList(pageIndex, pageSize, s => s.AccountName.Contains(searchName) && s.IsAble==true, s => s.ID);
+            List<tbUser> users = OperateContext.BLLSession.ItbUserBLL.GetPagedList(pageIndex, pageSize, s => s.AccountName.Contains(searchName) && s.IsDel==false, s => s.ID);
             total = users.Count();
             var data = new
             {
@@ -137,7 +137,7 @@ namespace WebAppMvc.Controllers
             }
         }
         //伪删除
-        public ActionResult DelUserList()//DelUserByIDs()
+        public ActionResult DelUserByIDs()//DelUserList()
         {
             ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "删除失败！" };
             try
@@ -158,9 +158,8 @@ namespace WebAppMvc.Controllers
                    foreach (var id in uIds)
                     {
                         int ID = int.Parse(id);
-                        delInfo.ID = ID;
-                        delInfo.IsAble = false;
-                        flag = OperateContext.BLLSession.ItbUserBLL.ModifyBy(delInfo,u=> u.ID== ID, "IsAble");
+                        delInfo.IsDel = true;
+                        flag = OperateContext.BLLSession.ItbUserBLL.ModifyBy(delInfo,u=> u.ID== ID, "IsDel");
                     }
                     if (flag>0)
                     {
@@ -185,7 +184,7 @@ namespace WebAppMvc.Controllers
             }
         }
         //真删除
-        public ActionResult DelUserByIDs()//DelUserList()
+        public ActionResult DelUserList()//DelUserByIDs()
         {
             ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "删除失败！" };
             try
@@ -230,6 +229,53 @@ namespace WebAppMvc.Controllers
             catch (Exception ex)
             {
                 ajaxM.Msg = ajaxM.Msg + "," + ex.Message;
+                return Json(ajaxM);
+            }
+        }
+        /// <summary>
+        /// 修改密码页面展示
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ChangePwd()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UpdatePwd(string UserPwd, string NewPwd, string ConfirmPwd)
+        {
+            ModelEF.FormatModel.AjaxMsgModel ajaxM = new ModelEF.FormatModel.AjaxMsgModel() { Statu = "err", Msg = "修改密码失败！" };
+            try
+            {
+                tbUser uInfo = Session["ainfo"] as tbUser;
+
+                tbUser userChangePwd = OperateContext.BLLSession.ItbUserBLL.GetListBy(u=>u.ID==uInfo.ID).Select(u => u.ToPOCO()).First();
+                userChangePwd.Password = CommonHelper.Md5Hash(NewPwd);   //md5加密
+                if (CommonHelper.Md5Hash(UserPwd) == uInfo.Password)
+                {
+                    int flag = OperateContext.BLLSession.ItbUserBLL.ModifyBy(userChangePwd,u=>u.ID==uInfo.ID, "Password");
+                    if (flag>0)
+                    {
+                        ajaxM.Statu = "ok";
+                        ajaxM.Msg = "修改成功，请重新登录！";
+                        return Json(ajaxM);
+                    }
+                    else
+                    {
+                        return Json(ajaxM);
+                    }
+                }
+                else
+                {
+                    ajaxM.Msg = "原密码不正确";
+                    return Json(ajaxM);
+                }
+            }
+            catch (Exception ex)
+            {
+                ajaxM.Msg = "修改失败," + ex.Message;
                 return Json(ajaxM);
             }
         }

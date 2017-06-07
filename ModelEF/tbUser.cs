@@ -27,5 +27,6 @@ namespace ModelEF
         public Nullable<System.DateTime> CreateTime { get; set; }
         public string UpdateBy { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
+        public Nullable<bool> IsDel { get; set; }
     }
 }

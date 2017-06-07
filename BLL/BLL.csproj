@@ -46,7 +46,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BLL.tt</DependentUpon>
     </Compile>
-    <Compile Include="BLLExtention\tbUser.cs" />
+    <Compile Include="BLLExtention\tbUserBLL.cs" />
     <Compile Include="BLLSession.cs" />
     <Compile Include="BLLSessionExtention.cs">
       <AutoGen>True</AutoGen>
@@ -59,6 +59,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{72834930-35fd-4d80-afbb-545285a16a75}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALMSSQL\DALMSSQL.csproj">
+      <Project>{06B5D54C-C60A-441C-A502-10CD4986E6FC}</Project>
+      <Name>DALMSSQL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DI\DI.csproj">
       <Project>{7f17f35f-3ce3-4d8b-b79c-f90d41bbcf75}</Project>

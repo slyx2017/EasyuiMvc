@@ -558,28 +558,103 @@ function autoAddClear() {
         }
     }
 }
+//修改密码
+function ChangePwd(changetype) {
+    var titles = "修改密码";
+    var outText = "取 消";
+    if (changetype == "first") {
+        titles = "首次登陆必须重置密码";
+        outText = "退 出";
+    }
 
+    $("<div/>").dialog({
+        id: "ui_user_userchangepwd_dialog",
+        href: "/User/ChangePwd",
+        title: titles,
+        height: 220,
+        width: 320,
+        modal: true,
+        closable: false,
+        buttons: [{
+            id: "ui_user_userchangepwd_edit",
+            text: '修 改',
+            handler: function () {
+                var postData = {
+                    UserPwd: $("#txtoriginalpwd").val(),
+                    NewPwd: $("#txtnewpwd").val(),
+                    ConfirmPwd: $("#txtconfirmpwd").val()
+                };
+                if (postData.UserPwd == postData.NewPwd) {
+                    $.messager.alert("提示", "新密码不能与原密码相同","warning");
+                    return;
+                }
+
+                //更新密码
+                $.post("/User/UpdatePwd", postData, function (data) {
+                    var dataBack = data;
+                    if (dataBack.Statu == "ok") {
+                        //方法1、重新登录生效
+                        $.messager.confirm("系统提示", dataBack.Msg, function (rt) {
+                            if (rt) {
+                                LoginOut();
+                            }
+                            else {
+                                return;
+                            }
+                        });
+                        //方法2、 强制重新登录
+                        //$.messager.alert("", dataBack.Msg, "warning", function (rt) {     
+                        //    LoginOut();
+                        //})
+                    }
+                    else {
+                        $.messager.alert("提示", dataBack.Msg,"error");
+                    }
+                });
+            }
+        }, {
+            text: outText,
+            handler: function () {
+                if (changetype == "first") {
+                    UserLoginOut();
+                }
+                else {
+                    $("#ui_user_userchangepwd_dialog").dialog('destroy');
+                }
+            }
+        }],
+        onLoad: function () {
+            $("#txtoriginalpwd").focus();
+            if (changetype == "first") {
+                $.messager.alert("提示", "首次登陆必须重置密码", "warning");
+            }
+        }
+    });
+}
 //退出系统
 function UserLoginOut() {
     $.messager.confirm("系统提示", "您确定要退出吗?", function (rt) {
         if (rt) {
-            $.ajax({
-                url: "/Login/UserLoginOut",
-                type: "post",
-                dataType: "json",
-                success: function (result) {
-                    if (result.Statu == "ok") {
-                        window.location.href = result.BackUrl;
-                    }
-                    else {
-                        $.messager.alert("系统提示", result.Msg);
-                        return;
-                    }
-                }
-            })
+            LoginOut();
         }
         else {
             return;
+        }
+    })
+}
+function LoginOut() {
+    $.ajax({
+        url: "/Login/UserLoginOut",
+        type: "post",
+        dataType: "json",
+        success: function (result) {
+            if (result.Statu == "ok") {
+                window.location.href = result.BackUrl;
+            }
+            else {
+                $.messager.alert("系统提示", result.Msg);
+                return;
+            }
         }
     })
 }

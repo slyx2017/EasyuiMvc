@@ -28,7 +28,8 @@ namespace ModelEF
                 UpdateBy = this.UpdateBy,
                 UpdateTime = this.UpdateTime,
                 CreateBy = this.CreateBy,
-                CreateTime = this.CreateTime
+                CreateTime = this.CreateTime,
+                IsDel=this.IsDel
             };
             return poco;
         }

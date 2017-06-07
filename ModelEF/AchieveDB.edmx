@@ -50,6 +50,7 @@
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsDel" Type="bit" />
         </EntityType>
         <EntityContainer Name="AchieveDBModelStoreContainer">
           <EntitySet Name="tbIcons" EntityType="Self.tbIcons" Schema="dbo" store:Type="Tables" />
@@ -110,6 +111,7 @@
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDel" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -150,6 +152,7 @@
           <EntitySetMapping Name="tbUser">
             <EntityTypeMapping TypeName="AchieveDBModel.tbUser">
               <MappingFragment StoreEntitySet="tbUser">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />

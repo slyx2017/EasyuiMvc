@@ -16,7 +16,7 @@ namespace BLL
 		    get
 			{
 			    if(itbIconsBLL==null)
-				   itbIconsBLL=new tbIcons();
+				   itbIconsBLL=new tbIconsBLL();
 				return itbIconsBLL;
 			}
 		    set 
@@ -33,7 +33,7 @@ namespace BLL
 		    get
 			{
 			    if(itbMenuBLL==null)
-				   itbMenuBLL=new tbMenu();
+				   itbMenuBLL=new tbMenuBLL();
 				return itbMenuBLL;
 			}
 		    set 
@@ -50,7 +50,7 @@ namespace BLL
 		    get
 			{
 			    if(itbUserBLL==null)
-				   itbUserBLL=new tbUser();
+				   itbUserBLL=new tbUserBLL();
 				return itbUserBLL;
 			}
 		    set 

@@ -4,6 +4,11 @@
         striped: true, rownumbers: true, pagination: true, pageSize: 20, fitColumns: true,
         idField: 'ID',
         pageList: [20, 40, 60, 80, 100],
+        rowStyler: function(index,row){
+            if (!row.IsAble) {
+                return 'background-color:#696969;color:#fff;font-weight:bold;';
+            }
+        },
         frozenColumns: [[
                          { field: 'ck', checkbox: true },
                          { width: 100, title: '登录名', field: 'AccountName' },
@@ -22,7 +27,8 @@
                    { field: 'MobilePhone', title: '联系人手机', width: 100 },
                    { field: 'Email', title: '邮箱', width: 150 },
                    {
-                       field: 'IsAble', title: '启用', width: 40, align: 'center',
+                       field: 'IsAble', title: '启用', width: 40, align: 'center'
+                       ,
                        formatter: function (value, row, index) {
                            return value ? '<img src="../../Content/themes/icon/chk_checked.gif" alt="已启用" title="用户已启用" />' : '<img src="../../Content/themes/icon/chk_unchecked.gif" alt="未启用" title="用户未启用" />';
                        }

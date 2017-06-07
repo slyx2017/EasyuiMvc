@@ -42,7 +42,7 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 		    get
 			{
 			    if(i<#=entity.Name#>BLL==null)
-				   i<#=entity.Name#>BLL=new <#=entity.Name#>();
+				   i<#=entity.Name#>BLL=new <#=entity.Name#>BLL();
 				return i<#=entity.Name#>BLL;
 			}
 		    set 

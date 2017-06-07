@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public partial class tbUser :IBLL.ItbUserBLL
+    public partial class tbUserBLL :IBLL.ItbUserBLL
     {
         /// <summary>
         /// 登录验证 Login(string strName,string strPwd)
@@ -16,11 +16,11 @@ namespace BLL
         /// <returns></returns>
         public ModelEF.tbUser Login(string strName,string strPwd)
         {
-            int Count = GetListBy(u => u.AccountName == strName).Count;
+            int Count = GetListBy(u => u.AccountName == strName && u.IsAble==true &&u.IsDel==false).Count;
             ModelEF.tbUser usr = null;
             if (Count>0)
             {
-                usr = base.GetListBy(u => u.AccountName == strName).Select(u => u.ToPOCO()).First();
+                usr = base.GetListBy(u => u.AccountName == strName && u.IsAble == true && u.IsDel == false).Select(u => u.ToPOCO()).First();
             }
             if (usr != null && usr.Password == Common.CommonHelper.Md5Hash(strPwd))
             {
