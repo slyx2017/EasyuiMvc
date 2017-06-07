@@ -12,10 +12,18 @@ namespace WebAppMvc.Controllers
     public class UserController : BaseController
     {
         // GET: Users
+        /// <summary>
+        /// 用户列表展示页面
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetAllUserInfo()
         {
             int pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);
