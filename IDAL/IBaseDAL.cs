@@ -17,7 +17,6 @@ namespace IDAL
         //MODEL.OuOAEntities db = new MODEL.OuOAEntities();
 
         //2.定义增删改查方法
-        int DelList(List<T> model);
 
         #region 1.0 新增 实体 +int Add(T model)
         /// <summary>

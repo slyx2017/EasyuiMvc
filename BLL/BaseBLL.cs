@@ -63,10 +63,6 @@ namespace BLL
         }
         #endregion
 
-        public int DelList(List<T> model)
-        {
-            return idal.DelList(model);
-        }
         public int Add(T model)
         {
             return idal.Add(model);
