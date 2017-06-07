@@ -21,7 +21,6 @@ namespace IBLL
     public interface IBaseBLL<T> where T : class, new()
     {
         //2.定义 增删改查 方法
-        int DelList(List<T> model);
 
         #region 1.0 新增 实体 +int Add(T model)
         /// <summary>
